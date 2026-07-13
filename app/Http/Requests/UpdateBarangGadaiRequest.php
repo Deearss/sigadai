@@ -17,7 +17,7 @@ class UpdateBarangGadaiRequest extends FormRequest
         return [
             'nama_barang' => ['required', 'string', 'max:255'],
             'kategori' => ['required', \Illuminate\Validation\Rule::in(\App\Models\BarangGadai::KATEGORI)],
-            'taksiran_nilai' => ['required', 'integer', 'min:1'],
+            'taksiran_nilai' => ['required', 'integer', 'min:100', 'multiple_of:100'],
             'jangka_waktu' => ['required', 'integer', 'min:1'],
             'nama_nasabah' => ['required', 'string', 'max:255'],
             'no_hp'          => ['required', 'string', 'max:20'],
@@ -35,6 +35,7 @@ class UpdateBarangGadaiRequest extends FormRequest
             'max' => ':attribute maksimal :max karakter.',
             'numeric' => ':attribute harus berupa angka.',
             'min' => ':attribute minimal bernilai :min.',
+            'multiple_of' => ':attribute harus kelipatan Rp 100 (tidak boleh ada pecahan uang koin di bawah 100).',
             'date' => ':attribute harus berupa tanggal yang valid.',
             'in' => ':attribute pilihan tidak valid.',
         ];
