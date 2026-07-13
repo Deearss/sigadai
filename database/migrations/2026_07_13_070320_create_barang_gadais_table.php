@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_barang');
             $table->enum('kategori', ['elektronik', 'kendaraan']);
-            $table->decimal('taksiran_nilai', 15, 2);
+            $table->unsignedBigInteger('taksiran_nilai');
             $table->string('nama_nasabah');
             $table->string('no_hp');
             $table->date('tanggal_gadai');
