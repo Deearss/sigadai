@@ -22,11 +22,8 @@ class BarangGadai extends Model
     public const KATEGORI = ['elektronik', 'kendaraan'];
     public const STATUS = ['aktif', 'ditebus', 'lelang'];
 
-    protected function casts(): array
-    {
-        return [
-            'tanggal_gadai' => 'date',
-            'taksiran_nilai' => 'decimal:2',
-        ];
-    }
+    protected $casts = [
+        'tanggal_gadai' => 'date',
+        'taksiran_nilai' => 'decimal:2',
+    ];
 }
