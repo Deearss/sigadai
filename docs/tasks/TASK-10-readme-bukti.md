@@ -1,0 +1,40 @@
+# TASK-10: README + bukti portofolio
+
+**Status:** ⬜ Belum
+**Prasyarat:** TASK-08 ✅ dan TASK-09 ✅
+**Fase spec:** 5
+
+## Tujuan
+
+Repo-nya "jualan": orang yang buka GitHub langsung ngerti app-nya apa, kelihatan hidup, dan bisa nyoba sendiri dalam 30 detik.
+
+## Instruksi
+
+1. **Screenshot** (minta Dier ambil, atau pakai browser tool kalau ada): login, dashboard, index barang (dengan filter aktif), form create, badge status kelihatan. Simpan di `docs/screenshots/`, kompres wajar (< 300KB per file).
+2. **Video demo 1–2 menit** — INI TUGAS DIER (rekam layar: login → dashboard → tambah barang → cari/filter → edit → hapus). Upload YouTube unlisted / Drive. Agent cukup nyiapin daftar adegan + nempel link-nya pas udah ada.
+3. **Tulis ulang `README.md`** (buang bawaan Laravel), struktur:
+   - Judul + tagline 1 kalimat + badge tech (Laravel, Tailwind, MySQL)
+   - **Link live + akun demo** (email & password demo dipajang jelas di atas)
+   - Screenshot 2–3 yang paling menjual
+   - Fitur (bullet, singkat)
+   - Tech stack & keputusan teknis singkat (kenapa Breeze, kenapa 1 tabel)
+   - Link video demo
+   - Cara jalanin lokal (clone → composer install → cp .env.example → key:generate → migrate --seed → npm install && npm run dev → serve)
+   - Konteks: "dibangun sebagai portofolio bertema bisnis gadai syariah"
+4. README pakai bahasa Indonesia (target pembacanya HRD/tech lead koperasi lokal).
+5. Push, terus cek tampilan README di GitHub (gambar kebaca, link jalan).
+6. **Publikasikan repo** (Definition of Done minta repo publik — repo sengaja privat selama develop). Konfirmasi dulu ke Dier, lalu: `gh repo edit Deearss/sigadai --visibility public --accept-visibility-change-consequences`
+
+## Kriteria selesai
+
+- [ ] README di GitHub: semua gambar render, link live bisa diklik dan jalan
+- [ ] Orang asing bisa login ke demo cuma dari baca README
+- [ ] Definition of Done poin 7–8 ✓ → **PROJEK SELESAI** 🎉
+
+## Jangan
+
+- Jangan nulis README bertele-tele. HRD scan 30 detik.
+
+## Commit
+
+`TASK-10: README + screenshot + link demo`
