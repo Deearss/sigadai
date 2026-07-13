@@ -19,9 +19,10 @@
    - `tanggal_gadai`: acak 6 bulan terakhir.
    - `status`: acak dengan bobot ± aktif 60%, ditebus 25%, lelang 15%.
    - `catatan`: ± 30% terisi (kondisi barang, kelengkapan surat), sisanya null.
-3. `DatabaseSeeder`:
-   - User demo: name `Petugas Demo`, email `demo@sigadai.my.id`, password `sigadai123`.
-   - `BarangGadai::factory(25)->create();`
+3. **Pindahin faker ke dependency produksi:** `composer require fakerphp/faker`. Alasan: seeder ini juga jalan di produksi (data produksi = data demo), sedangkan deploy pakai `composer install --no-dev` — kalau faker tetap di `require-dev`, seed di server bakal crash. Ini pengecualian resmi dari aturan "jangan nambah package" di 01-CARA-KERJA (package-nya udah ada, cuma pindah section).
+4. `DatabaseSeeder`:
+   - User demo: name `Petugas Demo`, email `demo@sigadai.my.id`, password `sigadai123`. **Hapus seed user `test@example.com` bawaan Laravel** — jangan sampai akun default ketebak hidup di produksi.
+   - Biar tiap status & kategori PASTI ada (bukan untung-untungan random): bikin 6 record eksplisit dulu lewat factory state (kombinasi 3 status × 2 kategori), lalu `BarangGadai::factory(19)->create();` → total 25.
    - Idempotent-ish: pakai `User::factory()->create([...])` biasa aja — seeder memang diasumsikan jalan setelah `migrate:fresh`.
 
 ## Kriteria selesai

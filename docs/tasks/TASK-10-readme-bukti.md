@@ -22,8 +22,7 @@ Repo-nya "jualan": orang yang buka GitHub langsung ngerti app-nya apa, kelihatan
    - Cara jalanin lokal (clone → composer install → cp .env.example → key:generate → migrate --seed → npm install && npm run dev → serve)
    - Konteks: "dibangun sebagai portofolio bertema bisnis gadai syariah"
 4. README pakai bahasa Indonesia (target pembacanya HRD/tech lead koperasi lokal).
-5. Push, terus cek tampilan README di GitHub (gambar kebaca, link jalan).
-6. **Publikasikan repo** (Definition of Done minta repo publik — repo sengaja privat selama develop). Konfirmasi dulu ke Dier, lalu: `gh repo edit Deearss/sigadai --visibility public --accept-visibility-change-consequences`
+5. Push, terus cek tampilan README di GitHub (gambar kebaca, link jalan) — repo udah publik, jadi ini yang bakal diliat reviewer.
 
 ## Kriteria selesai
 

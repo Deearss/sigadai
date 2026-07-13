@@ -24,7 +24,7 @@
 | Frontend | Blade + Tailwind CSS (via Vite) | ✅ ter-install |
 | DB lokal | SQLite (`database/database.sqlite`) | ✅ jalan |
 | DB produksi | MySQL 8 | di VPS nanti |
-| Repo | https://github.com/Deearss/sigadai (**privat** selama develop; dipublikkan di TASK-10, branch `main`) | ✅ ke-push |
+| Repo | https://github.com/Deearss/sigadai (publik, branch `main`) | ✅ ke-push |
 | Deploy | VPS Biznet, Ubuntu 22.04 | ⬜ belum disewa Dier |
 | Domain | `.my.id` (nama final nunggu Dier beli) | ⬜ belum dibeli |
 
@@ -54,6 +54,8 @@ Plus tabel `users` bawaan Breeze (udah ada).
 ## User & fitur
 
 **Cuma 1 jenis user:** petugas koperasi (login via Breeze). Nggak ada role/permission bertingkat. Nasabah BUKAN user — cuma data.
+
+**Registrasi publik & reset password DIMATIKAN** (dikerjain di TASK-03): user satu-satunya datang dari seeder. Jangan aktifin lagi route register/forgot-password bawaan Breeze.
 
 Fitur (semua milik user login):
 - Dashboard: 3 kartu (jumlah barang `aktif`, total taksiran nilai `aktif`, jumlah barang per kategori)

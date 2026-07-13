@@ -11,6 +11,9 @@
 1. **Persiapan server:**
    ```bash
    apt update && apt upgrade -y
+   # WAJIB: repo default Ubuntu 22.04 cuma punya PHP 8.1, sedangkan projek butuh PHP >= 8.3.
+   # Tanpa PPA ini, apt install di bawah PASTI gagal ("Unable to locate package php8.3-fpm"):
+   apt install -y software-properties-common && add-apt-repository -y ppa:ondrej/php && apt update
    apt install -y nginx mysql-server git unzip curl \
      php8.3-fpm php8.3-mysql php8.3-mbstring php8.3-xml php8.3-curl php8.3-zip php8.3-bcmath
    # Composer:
@@ -18,7 +21,7 @@
    # Node 22 LTS (buat build Tailwind):
    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt install -y nodejs
    ```
-   Kalau Biznet kasih Ubuntu dengan PHP 8.3 nggak tersedia di repo default, tambahin PPA `ondrej/php` dulu.
+   (Alternatif: kalau Biznet nyediain image Ubuntu 24.04, PHP 8.3 udah native — langkah PPA bisa di-skip.)
 2. **MySQL:** bikin DB + user (JANGAN pakai root buat app):
    ```sql
    CREATE DATABASE sigadai CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -47,7 +50,11 @@
    SESSION_DRIVER=database
    QUEUE_CONNECTION=sync
    ```
-   Lalu: `php artisan key:generate && php artisan migrate --seed --force && php artisan optimize`
+   Lalu: `php artisan key:generate` dan migrate — **kondisional**:
+   - TASK-02 (seeder + akun demo) udah kelar → `php artisan migrate --seed --force`
+   - TASK-02 BELUM kelar (deploy skeleton duluan) → `php artisan migrate --force` **TANPA `--seed`** — seeder bawaan Laravel bikin user `test@example.com` password `password`, kredensial ketebak di server publik. Seed nyusul setelah TASK-02: `php artisan migrate:fresh --seed --force`.
+   - Terakhir: `php artisan optimize`
+   Catatan: seeder butuh faker di dependency produksi — TASK-02 langkah 3 udah mindahin (`composer require fakerphp/faker`), jadi `composer install --no-dev` aman.
 5. **Permission:** `chown -R www-data:www-data /var/www/sigadai && chmod -R 775 storage bootstrap/cache`
 6. **Nginx** — server block root ke `/var/www/sigadai/public`, template standar Laravel (`try_files $uri $uri/ /index.php?$query_string;` + fastcgi ke `php8.3-fpm.sock`). Enable site, `nginx -t`, reload.
 7. **Domain & SSL:** arahkan A record domain ke IP VPS (di panel registrar), tunggu propagasi, lalu:
@@ -59,7 +66,7 @@
 
 ### Kriteria selesai Bagian A
 - [ ] `https://<domain>` kebuka dari HP pakai data seluler (bukan wifi rumah) — halaman login muncul, gembok SSL hijau
-- [ ] Bisa login pakai akun demo
+- [ ] Kalau TASK-02 udah kelar: bisa login pakai akun demo. Kalau belum: cukup halaman login muncul (tes login nyusul begitu TASK-02 + seed produksi jalan)
 - [ ] `APP_DEBUG=false` — bikin error sengaja (URL ngaco) → error page generik, BUKAN stack trace
 
 ## Bagian B — Deploy final (setelah TASK-08)
