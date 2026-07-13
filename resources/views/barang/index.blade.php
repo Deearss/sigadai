@@ -58,7 +58,7 @@
                                     <th scope="col" class="px-6 py-3">Taksiran</th>
                                     <th scope="col" class="px-6 py-3">Nasabah</th>
                                     <th scope="col" class="px-6 py-3">No. HP</th>
-                                    <th scope="col" class="px-6 py-3">Tanggal Gadai</th>
+                                    <th scope="col" class="px-6 py-3">Tanggal / Tenor</th>
                                     <th scope="col" class="px-6 py-3">Status</th>
                                     <th scope="col" class="px-6 py-3">Aksi</th>
                                 </tr>
@@ -83,6 +83,7 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $barang->tanggal_gadai->format('d/m/Y') }}
+                                            <div class="text-xs text-gray-400 mt-1">{{ $barang->jangka_waktu }} Hari</div>
                                         </td>
                                         <td class="px-6 py-4">
                                             @include('barang._status-badge', ['status' => $barang->status])

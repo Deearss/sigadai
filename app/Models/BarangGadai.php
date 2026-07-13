@@ -15,6 +15,7 @@ class BarangGadai extends Model
         'nama_barang',
         'kategori',
         'taksiran_nilai',
+        'jangka_waktu',
         'nama_nasabah',
         'no_hp',
         'tanggal_gadai',

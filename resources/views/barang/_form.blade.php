@@ -17,8 +17,19 @@
 
 <div class="mt-4">
     <x-input-label for="taksiran_nilai" :value="__('Taksiran Nilai (Rp)')" />
-    <x-text-input id="taksiran_nilai" class="block mt-1 w-full" type="number" step="1000" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" required />
+    <x-text-input id="taksiran_nilai" class="block mt-1 w-full" type="text" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" required />
     <x-input-error :messages="$errors->get('taksiran_nilai')" class="mt-2" />
+</div>
+
+<div class="mt-4">
+    <x-input-label for="jangka_waktu" :value="__('Jangka Waktu (Hari)')" />
+    <select id="jangka_waktu" name="jangka_waktu" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" required>
+        <option value="" disabled {{ old('jangka_waktu', $barang->jangka_waktu ?? '') == '' ? 'selected' : '' }}>Pilih Jangka Waktu</option>
+        @foreach([30, 60, 90, 120] as $hari)
+            <option value="{{ $hari }}" {{ old('jangka_waktu', $barang->jangka_waktu ?? '') == $hari ? 'selected' : '' }}>{{ $hari }} Hari</option>
+        @endforeach
+    </select>
+    <x-input-error :messages="$errors->get('jangka_waktu')" class="mt-2" />
 </div>
 
 <div class="mt-4">
@@ -55,3 +66,30 @@
     <textarea id="catatan" name="catatan" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" rows="3">{{ old('catatan', $barang->catatan ?? '') }}</textarea>
     <x-input-error :messages="$errors->get('catatan')" class="mt-2" />
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const taksiranInput = document.getElementById('taksiran_nilai');
+        
+        const formatRupiah = (angka) => {
+            let number_string = angka.toString().replace(/[^,\d]/g, ''),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            
+            if (ribuan) {
+                let separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            return rupiah;
+        };
+
+        if (taksiranInput) {
+            taksiranInput.value = formatRupiah(taksiranInput.value);
+            taksiranInput.addEventListener('input', function(e) {
+                this.value = formatRupiah(this.value);
+            });
+        }
+    });
+</script>

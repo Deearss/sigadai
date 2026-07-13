@@ -37,6 +37,7 @@ class BarangGadaiFactory extends Factory
             'nama_barang' => $namaBarang,
             'kategori' => $kategori,
             'taksiran_nilai' => $taksiranNilai,
+            'jangka_waktu' => fake()->randomElement([30, 60, 90, 120]),
             'nama_nasabah' => fake('id_ID')->name(),
             'no_hp' => '08' . fake()->numerify('##########'),
             'tanggal_gadai' => fake()->dateTimeBetween('-6 months', 'now'),
