@@ -1,4 +1,4 @@
-# TASK-09: Deploy ke VPS Biznet (Ubuntu 22.04)
+# TASK-09: Deploy ke VPS Biznet (Ubuntu 24.04)
 
 **Status:** ⬜ Belum
 **Prasyarat:** Dier udah sewa VPS Biznet + beli domain `.my.id`. **Bagian A boleh (dan sebaiknya) dikerjain lebih awal** begitu VPS ready — lihat aturan di [01-CARA-KERJA](../01-CARA-KERJA.md). Bagian B nunggu TASK-08 ✅.
@@ -11,9 +11,6 @@
 1. **Persiapan server:**
    ```bash
    apt update && apt upgrade -y
-   # WAJIB: repo default Ubuntu 22.04 cuma punya PHP 8.1, sedangkan projek butuh PHP >= 8.3.
-   # Tanpa PPA ini, apt install di bawah PASTI gagal ("Unable to locate package php8.3-fpm"):
-   apt install -y software-properties-common && add-apt-repository -y ppa:ondrej/php && apt update
    apt install -y nginx mysql-server git unzip curl \
      php8.3-fpm php8.3-mysql php8.3-mbstring php8.3-xml php8.3-curl php8.3-zip php8.3-bcmath
    # Composer:
@@ -21,7 +18,7 @@
    # Node 22 LTS (buat build Tailwind):
    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt install -y nodejs
    ```
-   (Alternatif: kalau Biznet nyediain image Ubuntu 24.04, PHP 8.3 udah native — langkah PPA bisa di-skip.)
+   Ubuntu 24.04 udah bawa PHP 8.3 native, jadi langsung jalan. **Peringatan:** kalau ternyata image server-nya Ubuntu 22.04 (repo default cuma PHP 8.1), WAJIB tambah PPA dulu sebelum apt install di atas: `apt install -y software-properties-common && add-apt-repository -y ppa:ondrej/php && apt update` — tanpa itu, `php8.3-*` nggak ketemu dan seluruh install gagal. Cek dulu: `lsb_release -rs`.
 2. **MySQL:** bikin DB + user (JANGAN pakai root buat app):
    ```sql
    CREATE DATABASE sigadai CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

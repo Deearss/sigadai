@@ -25,7 +25,7 @@
 | DB lokal | SQLite (`database/database.sqlite`) | ✅ jalan |
 | DB produksi | MySQL 8 | di VPS nanti |
 | Repo | https://github.com/Deearss/sigadai (publik, branch `main`) | ✅ ke-push |
-| Deploy | VPS Biznet, Ubuntu 22.04 | ⬜ belum disewa Dier |
+| Deploy | VPS Biznet, Ubuntu 24.04 | ⬜ belum disewa Dier |
 | Domain | `.my.id` (nama final nunggu Dier beli) | ⬜ belum dibeli |
 
 > **Kenapa lokal SQLite padahal spec bilang MySQL?** MySQL lokal di mesin Dier butuh sudo buat bikin DB. SQLite = zero-friction buat dev, dan kode Laravel-nya identik (cuma beda `.env`). Produksi tetap MySQL sesuai spec. Jangan tulis query yang cuma jalan di salah satu (hindari raw SQL spesifik-vendor).
