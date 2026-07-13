@@ -1,6 +1,6 @@
 # TASK-03: Routes + Resource Controller + validasi
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-02 ✅
 **Fase spec:** 2
 
@@ -43,12 +43,12 @@ Semua route CRUD hidup dan tervalidasi. View-nya belum ada (TASK-04/05) — cont
 
 ## Kriteria selesai
 
-- [ ] `php artisan route:list | grep barang` → 6 route muncul (index, create, store, edit, update PUT|PATCH jadi satu baris, destroy) tanpa show
-- [ ] Edit satu barang via binding beneran ngambil data (bukan model kosong) — cek di tinker atau via form nanti
-- [ ] `GET /register` dan `GET /forgot-password` → 404
-- [ ] Semua route `barang.*` mental ke login kalau belum auth (tes pakai curl: dapat 302)
-- [ ] POST `/barang` dengan body kosong (via tes manual form nanti, atau tinker/HTTP client) → balik dengan error validasi, bukan 500
-- [ ] `GET /` guest → redirect login
+- [x] `php artisan route:list | grep barang` → 6 route muncul (index, create, store, edit, update PUT|PATCH jadi satu baris, destroy) tanpa show
+- [x] Edit satu barang via binding beneran ngambil data (bukan model kosong) — cek di tinker atau via form nanti
+- [x] `GET /register` dan `GET /forgot-password` → 404
+- [x] Semua route `barang.*` mental ke login kalau belum auth (tes pakai curl: dapat 302)
+- [x] POST `/barang` dengan body kosong (via tes manual form nanti, atau tinker/HTTP client) → balik dengan error validasi, bukan 500
+- [x] `GET /` guest → redirect login
 
 ## Jangan
 
