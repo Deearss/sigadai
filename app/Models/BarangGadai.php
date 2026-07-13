@@ -28,6 +28,6 @@ class BarangGadai extends Model
 
     protected $casts = [
         'tanggal_gadai' => 'date',
-        'taksiran_nilai' => 'decimal:2',
+        'taksiran_nilai' => 'integer',
     ];
 }
