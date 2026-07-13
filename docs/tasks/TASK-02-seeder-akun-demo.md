@@ -1,6 +1,6 @@
 # TASK-02: Factory + Seeder dummy + akun demo
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-01 ✅
 **Fase spec:** 1
 
@@ -27,11 +27,11 @@
 
 ## Kriteria selesai
 
-- [ ] `php artisan migrate:fresh --seed` sukses
-- [ ] Tinker: `App\Models\BarangGadai::count()` → 25
-- [ ] Tinker: ada minimal 1 record per status (`aktif`, `ditebus`, `lelang`) dan per kategori
-- [ ] Bisa login di browser pakai `demo@sigadai.my.id` / `sigadai123`
-- [ ] Spot-check: nama barang nyambung sama kategorinya
+- [x] `php artisan migrate:fresh --seed` sukses
+- [x] Tinker: `App\Models\BarangGadai::count()` → 25
+- [x] Tinker: ada minimal 1 record per status (`aktif`, `ditebus`, `lelang`) dan per kategori
+- [x] Bisa login di browser pakai `demo@sigadai.my.id` / `sigadai123`
+- [x] Spot-check: nama barang nyambung sama kategorinya
 
 ## Jangan
 
