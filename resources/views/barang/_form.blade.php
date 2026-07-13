@@ -17,7 +17,8 @@
 
 <div class="mt-4">
     <x-input-label for="taksiran_nilai" :value="__('Taksiran Nilai (Rp)')" />
-    <x-text-input id="taksiran_nilai" class="block mt-1 w-full" type="text" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" required />
+    <x-text-input id="taksiran_nilai" class="block mt-1 w-full" type="number" step="1000" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" required />
+    <div id="taksiran_preview" class="text-sm text-indigo-600 font-medium mt-1 min-h-[20px]"></div>
     <x-input-error :messages="$errors->get('taksiran_nilai')" class="mt-2" />
 </div>
 
@@ -70,8 +71,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const taksiranInput = document.getElementById('taksiran_nilai');
+        const taksiranPreview = document.getElementById('taksiran_preview');
         
         const formatRupiah = (angka) => {
+            if (!angka) return '';
             let number_string = angka.toString().replace(/[^,\d]/g, ''),
                 split = number_string.split(','),
                 sisa = split[0].length % 3,
@@ -82,13 +85,13 @@
                 let separator = sisa ? '.' : '';
                 rupiah += separator + ribuan.join('.');
             }
-            return rupiah;
+            return 'Rp ' + rupiah;
         };
 
-        if (taksiranInput) {
-            taksiranInput.value = formatRupiah(taksiranInput.value);
+        if (taksiranInput && taksiranPreview) {
+            taksiranPreview.innerText = formatRupiah(taksiranInput.value);
             taksiranInput.addEventListener('input', function(e) {
-                this.value = formatRupiah(this.value);
+                taksiranPreview.innerText = formatRupiah(this.value);
             });
         }
     });

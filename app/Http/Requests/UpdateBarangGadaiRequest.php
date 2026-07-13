@@ -12,15 +12,6 @@ class UpdateBarangGadaiRequest extends FormRequest
         return true;
     }
 
-    public function prepareForValidation()
-    {
-        if ($this->has('taksiran_nilai')) {
-            $this->merge([
-                'taksiran_nilai' => str_replace('.', '', $this->taksiran_nilai)
-            ]);
-        }
-    }
-
     public function rules(): array
     {
         return [
