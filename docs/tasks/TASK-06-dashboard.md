@@ -1,6 +1,6 @@
 # TASK-06: Dashboard 3 kartu ringkasan
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-05 ✅
 **Fase spec:** 3
 
@@ -20,9 +20,9 @@
 
 ## Kriteria selesai
 
-- [ ] Angka kartu cocok sama data seeder (cross-check pakai tinker)
-- [ ] `php artisan migrate:fresh` TANPA seed → dashboard tetap kebuka, angka 0 dan `Rp 0`, nggak error (abis ngetes, balikin: `migrate:fresh --seed`)
-- [ ] Responsive: 1 kolom di layar sempit
+- [x] Angka kartu cocok sama data seeder (cross-check pakai tinker)
+- [x] `php artisan migrate:fresh` TANPA seed → dashboard tetap kebuka, angka 0 dan `Rp 0`, nggak error (abis ngetes, balikin: `migrate:fresh --seed`)
+- [x] Responsive: 1 kolom di layar sempit
 
 ## Jangan
 
