@@ -1,6 +1,6 @@
 # TASK-05: View create/edit + delete dengan konfirmasi
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-04 ✅
 **Fase spec:** 2
 
@@ -26,11 +26,11 @@ Form tambah & edit barang jalan penuh dengan validasi kelihatan di UI, dan hapus
 
 ## Kriteria selesai
 
-- [ ] Tambah barang baru dari UI → muncul di index + flash sukses
-- [ ] Submit form kosong → error validasi Indonesia muncul per field, input lain nggak ilang (`old()` jalan)
-- [ ] Edit barang → perubahan kesimpen, form pre-filled dengan data lama
-- [ ] Klik Hapus → dialog konfirmasi muncul; Cancel = nggak kehapus, OK = kehapus + flash sukses
-- [ ] Coba inject nilai kategori ngaco (edit HTML select via devtools) → ditolak validasi
+- [x] Tambah barang baru dari UI → muncul di index + flash sukses
+- [x] Submit form kosong → error validasi Indonesia muncul per field, input lain nggak ilang (`old()` jalan)
+- [x] Edit barang → perubahan kesimpen, form pre-filled dengan data lama
+- [x] Klik Hapus → dialog konfirmasi muncul; Cancel = nggak kehapus, OK = kehapus + flash sukses
+- [x] Coba inject nilai kategori ngaco (edit HTML select via devtools) → ditolak validasi
 
 ## Jangan
 
