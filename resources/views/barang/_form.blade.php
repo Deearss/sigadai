@@ -16,8 +16,13 @@
 </div>
 
 <div class="mt-4">
-    <x-input-label for="taksiran_nilai" :value="__('Taksiran Nilai (Rp)')" />
-    <x-text-input id="taksiran_nilai" class="block mt-1 w-full" type="number" step="1000" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" required />
+    <x-input-label for="taksiran_nilai" :value="__('Taksiran Nilai')" />
+    <div class="relative mt-1 rounded-md shadow-sm">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <span class="text-gray-500 font-medium sm:text-sm">Rp</span>
+        </div>
+        <x-text-input id="taksiran_nilai" class="block w-full pl-10" type="text" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" placeholder="0" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
+    </div>
     <div id="taksiran_preview" class="text-sm text-indigo-600 font-medium mt-1 min-h-[20px]"></div>
     <x-input-error :messages="$errors->get('taksiran_nilai')" class="mt-2" />
 </div>
