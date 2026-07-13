@@ -1,6 +1,6 @@
 # TASK-01: Migration + Model `BarangGadai`
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** — (task pertama)
 **Fase spec:** 1
 
@@ -37,9 +37,9 @@ Tabel `barang_gadai` ada di DB, model `BarangGadai` siap dipakai.
 
 ## Kriteria selesai
 
-- [ ] `php artisan migrate` sukses tanpa error
-- [ ] `php artisan tinker --execute="App\Models\BarangGadai::create(['nama_barang'=>'Tes','kategori'=>'elektronik','taksiran_nilai'=>1000000,'nama_nasabah'=>'Tes','no_hp'=>'08123','tanggal_gadai'=>'2026-07-01'])->refresh()->status"` → output `aktif` (default jalan). **Catatan:** `->refresh()` wajib — Eloquent `create()` nggak baca default DB, tanpa refresh hasilnya `null` dan itu BUKAN bug.
-- [ ] Hapus data tes tadi (`BarangGadai::truncate()` via tinker)
+- [x] `php artisan migrate` sukses tanpa error
+- [x] `php artisan tinker --execute="App\Models\BarangGadai::create(['nama_barang'=>'Tes','kategori'=>'elektronik','taksiran_nilai'=>1000000,'nama_nasabah'=>'Tes','no_hp'=>'08123','tanggal_gadai'=>'2026-07-01'])->refresh()->status"` → output `aktif` (default jalan). **Catatan:** `->refresh()` wajib — Eloquent `create()` nggak baca default DB, tanpa refresh hasilnya `null` dan itu BUKAN bug.
+- [x] Hapus data tes tadi (`BarangGadai::truncate()` via tinker)
 
 ## Jangan
 
