@@ -1,6 +1,6 @@
 # TASK-07: Search & filter di index
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-06 ✅
 **Fase spec:** 3
 
@@ -33,11 +33,11 @@ Index bisa dicari & difilter via query string, contoh: `/barang?status=aktif&kat
 
 ## Kriteria selesai
 
-- [ ] `?q=` nyari di nama barang DAN nama nasabah
-- [ ] Kombinasi q + status + kategori jalan bareng
-- [ ] Pindah halaman pagination → filter tetap kepasang (cek URL)
-- [ ] Filter tanpa hasil → pesan empty, bukan tabel kosong ngeblank
-- [ ] `?status=ngaco` → nggak error 500
+- [x] `?q=` nyari di nama barang DAN nama nasabah
+- [x] Kombinasi q + status + kategori jalan bareng
+- [x] Pindah halaman pagination → filter tetap kepasang (cek URL)
+- [x] Filter tanpa hasil → pesan empty, bukan tabel kosong ngeblank
+- [x] `?status=ngaco` → nggak error 500
 
 ## Jangan
 

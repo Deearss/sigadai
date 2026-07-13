@@ -18,6 +18,34 @@
                 </div>
             @endif
 
+            <div class="mb-4 bg-white p-4 shadow-sm sm:rounded-lg">
+                <form method="GET" action="{{ route('barang.index') }}" class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <x-text-input id="q" class="block w-full" type="text" name="q" placeholder="Cari nama barang / nasabah..." value="{{ request('q') }}" />
+                    </div>
+                    <div class="w-full md:w-48">
+                        <select name="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
+                            <option value="">Semua Status</option>
+                            @foreach(\App\Models\BarangGadai::STATUS as $stat)
+                                <option value="{{ $stat }}" {{ request('status') == $stat ? 'selected' : '' }}>{{ ucfirst($stat) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="w-full md:w-48">
+                        <select name="kategori" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
+                            <option value="">Semua Kategori</option>
+                            @foreach(\App\Models\BarangGadai::KATEGORI as $kat)
+                                <option value="{{ $kat }}" {{ request('kategori') == $kat ? 'selected' : '' }}>{{ ucfirst($kat) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <x-primary-button type="submit">Cari</x-primary-button>
+                        <a href="{{ route('barang.index') }}" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Reset</a>
+                    </div>
+                </form>
+            </div>
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="overflow-x-auto">
@@ -70,7 +98,7 @@
                                 @empty
                                     <tr>
                                         <td colspan="8" class="px-6 py-4 text-center text-gray-500">
-                                            Belum ada data barang gadai.
+                                            Tidak ada barang yang cocok dengan pencarian.
                                         </td>
                                     </tr>
                                 @endforelse

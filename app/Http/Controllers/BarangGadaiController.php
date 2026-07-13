@@ -9,9 +9,18 @@ use App\Http\Requests\UpdateBarangGadaiRequest;
 
 class BarangGadaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $barangGadai = BarangGadai::latest()->paginate(10);
+        $barangGadai = BarangGadai::query()
+            ->when($request->q, fn ($query, $q) => $query->where(fn ($w) =>
+                $w->where('nama_barang', 'like', "%{$q}%")
+                  ->orWhere('nama_nasabah', 'like', "%{$q}%")))
+            ->when($request->status, fn ($query, $s) => $query->where('status', $s))
+            ->when($request->kategori, fn ($query, $k) => $query->where('kategori', $k))
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
         return view('barang.index', compact('barangGadai'));
     }
 
