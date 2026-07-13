@@ -1,6 +1,6 @@
 # TASK-04: View index (tabel daftar barang + pagination)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-03 ✅
 **Fase spec:** 2
 
@@ -20,10 +20,10 @@ Halaman `/barang` nampilin tabel barang gadai, rapi, pakai layout Breeze.
 
 ## Kriteria selesai
 
-- [ ] `/barang` (login) nampilin 10 baris + pagination jalan (klik halaman 2 → data beda)
-- [ ] Rupiah keformat: `Rp 5.000.000` bukan `5000000.00`
-- [ ] Link navigasi "Barang Gadai" muncul di navbar desktop & mobile, active state jalan
-- [ ] Nggak ada error di console browser / log Laravel
+- [x] `/barang` (login) nampilin 10 baris + pagination jalan (klik halaman 2 → data beda)
+- [x] Rupiah keformat: `Rp 5.000.000` bukan `5000000.00`
+- [x] Link navigasi "Barang Gadai" muncul di navbar desktop & mobile, active state jalan
+- [x] Nggak ada error di console browser / log Laravel
 
 ## Jangan
 
