@@ -1,6 +1,6 @@
 # TASK-08: Polish — status badge, empty state, cek validasi
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-07 ✅
 **Fase spec:** 4
 
@@ -26,10 +26,10 @@ App-nya kelihatan "jadi", bukan tugas kuliah. Ini task terakhir sebelum deploy f
 
 ## Kriteria selesai
 
-- [ ] 3 status punya badge warna beda, kebaca jelas
-- [ ] `migrate:fresh` tanpa seed → index & dashboard tetap oke, empty state muncul (abis itu balikin: `migrate:fresh --seed`)
-- [ ] Klik-klik seluruh app 5 menit: nggak nemu error, teks aneh, atau layout patah di mobile width
-- [ ] Definition of Done di [00-KONTEKS](../00-KONTEKS-PROJEK.md) poin 2–6 semua ✓ secara lokal
+- [x] 3 status punya badge warna beda, kebaca jelas
+- [x] `migrate:fresh` tanpa seed → index & dashboard tetap oke, empty state muncul (abis itu balikin: `migrate:fresh --seed`)
+- [x] Klik-klik seluruh app 5 menit: nggak nemu error, teks aneh, atau layout patah di mobile width
+- [x] Definition of Done di [00-KONTEKS](../00-KONTEKS-PROJEK.md) poin 2–6 semua ✓ secara lokal
 
 ## Jangan
 

@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot name="title">Barang Gadai</x-slot>
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -83,8 +84,8 @@
                                         <td class="px-6 py-4">
                                             {{ $barang->tanggal_gadai->format('d/m/Y') }}
                                         </td>
-                                        <td class="px-6 py-4 uppercase">
-                                            {{ $barang->status }}
+                                        <td class="px-6 py-4">
+                                            @include('barang._status-badge', ['status' => $barang->status])
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="{{ route('barang.edit', $barang) }}" class="font-medium text-blue-600 hover:underline mr-3">Edit</a>
@@ -98,7 +99,16 @@
                                 @empty
                                     <tr>
                                         <td colspan="8" class="px-6 py-4 text-center text-gray-500">
-                                            Tidak ada barang yang cocok dengan pencarian.
+                                            @if(\App\Models\BarangGadai::count() === 0)
+                                                <div class="py-8">
+                                                    <p class="mb-4 text-gray-600">Belum ada data barang gadai sama sekali di sistem.</p>
+                                                    <a href="{{ route('barang.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 transition ease-in-out duration-150">
+                                                        + Tambah Barang Pertama
+                                                    </a>
+                                                </div>
+                                            @else
+                                                Tidak ada barang yang cocok dengan pencarian.
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforelse
