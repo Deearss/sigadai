@@ -1,7 +1,7 @@
 # TASK-10: README + bukti portofolio
 
 **Status:** ⬜ Belum
-**Prasyarat:** TASK-08 ✅ dan TASK-09 ✅
+**Prasyarat:** TASK-11 s/d TASK-14 ✅ (kerjain paling akhir, biar screenshot & angka udah final)
 **Fase spec:** 5
 
 ## Tujuan
@@ -18,6 +18,7 @@ Repo-nya "jualan": orang yang buka GitHub langsung ngerti app-nya apa, kelihatan
    - Screenshot 2–3 yang paling menjual
    - Fitur (bullet, singkat)
    - Tech stack & keputusan teknis singkat (kenapa Breeze, kenapa 1 tabel)
+   - **CI/CD**: sebutin deploy otomatis via GitHub Actions ke VPS — ini nilai jual gede buat lowongan yang minta skill "Linux Server & deployment"
    - Link video demo
    - Cara jalanin lokal (clone → composer install → cp .env.example → key:generate → migrate --seed → npm install && npm run dev → serve)
    - Konteks: "dibangun sebagai portofolio bertema bisnis gadai syariah"

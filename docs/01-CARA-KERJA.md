@@ -6,20 +6,17 @@ Lu (agent) ngelanjutin projek yang skeleton-nya udah di-setup. Ikutin aturan ini
 
 Kerjain **berurutan** dari TASK-01 sampai TASK-10. Jangan loncat, kecuali satu pengecualian di bawah.
 
-| # | Task | Fase spec | Prasyarat |
-|---|---|---|---|
-| 01 | [Migration + Model](tasks/TASK-01-migration-model.md) | 1 | — |
-| 02 | [Factory + Seeder + akun demo](tasks/TASK-02-seeder-akun-demo.md) | 1 | 01 |
-| 03 | [Routes + Controller + validasi](tasks/TASK-03-crud-controller-validasi.md) | 2 | 02 |
-| 04 | [View: index + pagination](tasks/TASK-04-view-index.md) | 2 | 03 |
-| 05 | [View: create/edit + delete konfirmasi](tasks/TASK-05-view-form-delete.md) | 2 | 04 |
-| 06 | [Dashboard 3 kartu](tasks/TASK-06-dashboard.md) | 3 | 05 |
-| 07 | [Search & filter](tasks/TASK-07-search-filter.md) | 3 | 06 |
-| 08 | [Polish: badge, empty state, validasi](tasks/TASK-08-polish.md) | 4 | 07 |
-| 09 | [Deploy VPS Biznet](tasks/TASK-09-deploy-vps.md) | 0+4 | VPS & domain dibeli Dier |
-| 10 | [README + bukti](tasks/TASK-10-readme-bukti.md) | 5 | 08 + 09 |
+| # | Task | Status |
+|---|---|---|
+| 01–08 | Fondasi + fitur (migration → polish) | ✅ semua selesai |
+| 09 | [Deploy VPS Biznet](tasks/TASK-09-deploy-vps.md) | ✅ live via GitHub Actions |
+| **11** | [Auto-reset data demo](tasks/TASK-11-auto-reset-demo.md) | ⬜ **mulai dari sini** |
+| **12** | [Jatuh tempo DB-agnostic](tasks/TASK-12-jatuh-tempo-db-agnostic.md) | ⬜ setelah 11 |
+| **13** | [Konsistensi angka dashboard](tasks/TASK-13-dashboard-konsisten.md) | ⬜ setelah 12 |
+| **14** | [Hardening CI/CD](tasks/TASK-14-cicd-hardening.md) | ⬜ setelah 13 |
+| 10 | [README + bukti](tasks/TASK-10-readme-bukti.md) | ⬜ paling akhir (biar screenshot final) |
 
-**Pengecualian (prinsip "deploy duluan"):** begitu Dier bilang VPS + domain udah ready, **hentikan task fitur yang belum mulai** dan kerjain TASK-09 Bagian A (deploy skeleton) dulu. Abis itu balik ke urutan normal. TASK-09 Bagian B (deploy final) tetap nunggu TASK-08 kelar.
+TASK-11 s/d 14 lahir dari review kode menyeluruh 2026-07-15 — konteks temuannya ada di masing-masing file task.
 
 ## Ritual per task
 
@@ -31,12 +28,14 @@ Kerjain **berurutan** dari TASK-01 sampai TASK-10. Jangan loncat, kecuali satu p
 
 ## Aturan keras
 
+- ⚠️ **PUSH KE `main` = DEPLOY PRODUKSI OTOMATIS.** GitHub Actions ([deploy.yml](../.github/workflows/deploy.yml)) langsung SSH ke VPS dan jalanin `migrate --force` ke DB live tiap push. Jangan pernah push migration/kode setengah jadi. Kerjain sampai teruji lokal, baru push sekali.
+- **Jangan pernah edit migration yang udah ke-push.** Perubahan skema = migration baru. (Pelanggaran pertama udah kejadian di commit `eecd987` — jangan diulang.)
 - **Scope dikunci.** Fitur di luar task = tulis ke `docs/NANTI.md` (bikin kalau belum ada), jangan dikerjain. Termasuk: jangan nambah package composer/npm baru tanpa disuruh task.
 - **Jangan refactor** kode yang bukan bagian task lu.
 - **Bahasa UI = Indonesia.** Label tombol, judul halaman, pesan validasi: semua Indonesia.
 - **Konsisten sama Breeze.** Pakai layout `x-app-layout` dan komponen Blade bawaan Breeze (`x-input-label`, `x-text-input`, `x-primary-button`, `x-input-error`) biar seragam. Jangan bikin sistem komponen sendiri.
 - Format Rupiah pakai helper: `'Rp ' . number_format($nilai, 0, ',', '.')`.
-- **DB lokal = SQLite.** Jangan ubah `.env` lokal ke MySQL.
+- **Kode wajib jalan di MySQL DAN SQLite.** `.env` lokal sekarang MySQL (sah), tapi `phpunit.xml` & `.env.example` pakai SQLite — jangan pakai raw SQL spesifik-vendor.
 - Ada ambiguitas yang ngefek ke keputusan produk → **tanya Dier**, jangan ngarang.
 
 ## Cara verifikasi manual

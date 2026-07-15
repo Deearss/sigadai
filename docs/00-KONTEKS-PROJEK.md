@@ -22,13 +22,13 @@
 | Framework | Laravel 13 (PHP 8.3) | ✅ ter-install |
 | Auth | Laravel Breeze (blade stack) | ✅ ter-install |
 | Frontend | Blade + Tailwind CSS (via Vite) | ✅ ter-install |
-| DB lokal | SQLite (`database/database.sqlite`) | ✅ jalan |
-| DB produksi | MySQL 8 | di VPS nanti |
+| DB lokal | MySQL (`.env` lokal) | ✅ jalan |
+| DB produksi | MySQL 8 di VPS | ✅ live |
 | Repo | https://github.com/Deearss/sigadai (publik, branch `main`) | ✅ ke-push |
-| Deploy | VPS Biznet, Ubuntu 24.04 | ⬜ belum disewa Dier |
-| Domain | `.my.id` (nama final nunggu Dier beli) | ⬜ belum dibeli |
+| Deploy | VPS Biznet Ubuntu 24.04, **auto-deploy via GitHub Actions tiap push ke `main`** | ✅ LIVE |
+| Domain | **https://sigadai.my.id** (SSL aktif) | ✅ |
 
-> **Kenapa lokal SQLite padahal spec bilang MySQL?** MySQL lokal di mesin Dier butuh sudo buat bikin DB. SQLite = zero-friction buat dev, dan kode Laravel-nya identik (cuma beda `.env`). Produksi tetap MySQL sesuai spec. Jangan tulis query yang cuma jalan di salah satu (hindari raw SQL spesifik-vendor).
+> **Aturan DB:** kode WAJIB jalan di MySQL **dan** SQLite — `phpunit.xml` dan `.env.example` pakai SQLite, produksi pakai MySQL. Jangan pakai raw SQL spesifik-vendor (pelanggaran pertama udah kejadian dan dibereskan di TASK-12).
 
 ## Data model
 
@@ -41,7 +41,9 @@ Satu tabel utama. **Tanpa tabel nasabah terpisah** — nasabah cuma kolom, bukan
 | id | bigint PK | auto |
 | nama_barang | string | wajib |
 | kategori | enum: `elektronik`, `kendaraan` | wajib |
-| taksiran_nilai | decimal(15,2) | Rupiah, wajib |
+| taksiran_nilai | unsignedBigInteger | Rupiah bulat, wajib, kelipatan 100 (⚠️ penyimpangan resmi dari SPEC-ASLI yang bilang decimal(15,2)) |
+| jangka_waktu | integer, default 30 | lama gadai dalam HARI, wajib di form (kolom tambahan di luar SPEC-ASLI) |
+| tanggal_jatuh_tempo | date, nullable, index | dihitung otomatis = tanggal_gadai + jangka_waktu (nyusul di TASK-12) |
 | nama_nasabah | string | wajib |
 | no_hp | string | wajib |
 | tanggal_gadai | date | wajib |
@@ -74,22 +76,22 @@ Di-seed lewat `DatabaseSeeder`. Kredensial ini sengaja dipublikasikan di README.
 
 Angsuran/margin/bunga syariah · multi-cabang · multi-role · upload foto · notifikasi WA/email · cetak struk/PDF · REST API. Kalau kepikiran fitur bagus → tulis di `docs/NANTI.md`, lanjut kerja.
 
-## Yang udah dikerjain (kondisi sekarang)
+## Yang udah dikerjain (kondisi per 2026-07-15)
 
-- Laravel 13 + Breeze blade ter-install, Tailwind ke-build, migrasi default jalan (SQLite)
-- `APP_NAME=SiGadai`
-- Git init, push ke GitHub
-- Smoke test lulus: `/` 200, `/login` 200, `/dashboard` tanpa login → redirect 302
+- **TASK-01 s/d TASK-08 selesai semua** — CRUD, dashboard, search/filter, polish. Cek git log.
+- Di luar task resmi, ada serangkaian commit `TASK-EXTRA` (dikerjain Antigravity bareng Dier): UI di-rombak gaya Shadcn, kolom `jangka_waktu` + konsep "Jatuh Tempo", `taksiran_nilai` jadi integer, proteksi kredensial akun demo.
+- **App LIVE di https://sigadai.my.id** — VPS Biznet, deploy otomatis via GitHub Actions ([deploy.yml](../.github/workflows/deploy.yml)): tiap push ke `main` → SSH ke VPS → git pull, composer `--no-dev`, npm build, `migrate --force`, optimize.
+- Review menyeluruh 2026-07-15 menghasilkan batch perbaikan: **TASK-11 s/d TASK-14** (lihat file task masing-masing).
 
-**Belum ada satupun kode fitur SiGadai.** Mulai dari [tasks/TASK-01](tasks/TASK-01-migration-model.md).
+**Lanjut dari [tasks/TASK-11](tasks/TASK-11-auto-reset-demo.md)**, urutan lengkap di [01-CARA-KERJA](01-CARA-KERJA.md).
 
 ## Definition of Done (garis finish projek)
 
-- [ ] Ke-deploy di URL publik
-- [ ] Bisa login pakai akun demo
-- [ ] CRUD barang gadai jalan tanpa error
-- [ ] Dashboard nampilin angka dari seeder
-- [ ] Search & filter jalan
-- [ ] Nggak error pas data kosong (empty state)
-- [ ] README: deskripsi + screenshot + link live + link video demo
-- [ ] Repo publik rapi
+- [x] Ke-deploy di URL publik → https://sigadai.my.id
+- [x] Bisa login pakai akun demo (diverifikasi live 2026-07-15)
+- [x] CRUD barang gadai jalan tanpa error
+- [x] Dashboard nampilin angka dari seeder (⚠️ konsistensi angka dibenerin di TASK-13)
+- [x] Search & filter jalan
+- [x] Nggak error pas data kosong (empty state)
+- [ ] README: deskripsi + screenshot + link live + link video demo ← **TASK-10, belum**
+- [ ] Repo publik rapi ← nunggu TASK-10

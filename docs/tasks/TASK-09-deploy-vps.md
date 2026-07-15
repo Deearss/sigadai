@@ -1,6 +1,8 @@
 # TASK-09: Deploy ke VPS Biznet (Ubuntu 24.04)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai — tapi jalurnya BEDA dari rencana di bawah, baca kotak ini:
+
+> **Kondisi deploy NYATA (per 2026-07-15):** app live di https://sigadai.my.id. Deploy TIDAK manual — otomatis via GitHub Actions ([.github/workflows/deploy.yml](../../.github/workflows/deploy.yml)): tiap push ke `main` → SSH ke VPS (secrets: `VPS_HOST`, `VPS_USERNAME`, `VPS_SSH_KEY`) → `git pull`, `composer install --no-dev`, `npm run build`, `migrate --force`, `optimize` di `/var/www/sigadai`. Konsekuensi: **push ke main = deploy produksi seketika.** Prosedur manual di bawah disimpan sebagai referensi setup awal server, bukan alur kerja aktif.
 **Prasyarat:** Dier udah sewa VPS Biznet + beli domain `.my.id`. **Bagian A boleh (dan sebaiknya) dikerjain lebih awal** begitu VPS ready — lihat aturan di [01-CARA-KERJA](../01-CARA-KERJA.md). Bagian B nunggu TASK-08 ✅.
 **Fase spec:** 0 (skeleton) + 4 (final)
 
