@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-1.5">
-                                <span class="text-xs text-gray-500">Sedang dalam masa gadai (termasuk {{ $barangJatuhTempo }} jatuh tempo)</span>
+                                <span class="text-xs text-gray-500">Sedang dalam masa gadai</span>
                                 <a href="{{ route('barang.index', ['status' => 'aktif']) }}" class="text-sm font-semibold text-emerald-600 hover:text-emerald-800 inline-flex items-center gap-1 transition-colors relative z-20 group">
                                     Filter Aktif <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">&rarr;</span>
                                 </a>
@@ -154,11 +154,11 @@
             const chartData = isDataEmpty ? [1] : data;
             const chartBgColors = isDataEmpty 
                 ? ['#f3f4f6'] 
-                : ['#10b981', '#6366f1', '#f59e0b']; // Aktif (Emerald), Ditebus (Indigo), Lelang (Amber)
+                : ['#10b981', '#ef4444', '#6366f1', '#f59e0b']; // Aktif (Emerald), Jatuh Tempo (Red), Ditebus (Indigo), Lelang (Amber)
                 
             const chartBorderColors = isDataEmpty 
                 ? ['#e5e7eb'] 
-                : ['#059669', '#4f46e5', '#d97706'];
+                : ['#059669', '#dc2626', '#4f46e5', '#d97706'];
 
             new Chart(ctx, {
                 type: 'doughnut',

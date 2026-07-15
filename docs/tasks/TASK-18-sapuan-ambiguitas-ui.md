@@ -1,6 +1,6 @@
 # TASK-18: Sapuan ambiguitas UI (hasil exploratory testing 2026-07-15)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-17 ✅
 **Asal:** exploratory testing Claude di situs live (semua filter + kombinasi + mobile). Semua temuan di bawah udah diverifikasi ke kode (file:line dicantumin). Kerjain berurutan A → H.
 
@@ -62,10 +62,10 @@ Submit form filter ngehasilin `?q=&status=&kategori=` (param kosong nempel di UR
 
 ## Kriteria selesai keseluruhan
 
-- [ ] Semua kriteria per-item di atas
-- [ ] `php artisan test` hijau
-- [ ] Setelah deploy: ulangi skenario — filter Aktif (nol badge merah), filter Lelang (semua bar "Dilelang"), cek chart sum = total, cek mobile 375px
-- [ ] `migrate:fresh --seed` + `demo:reset` masih jalan normal
+- [x] Semua kriteria per-item di atas
+- [x] `php artisan test` hijau
+- [x] Setelah deploy: ulangi skenario — filter Aktif (nol badge merah), filter Lelang (semua bar "Dilelang"), cek chart sum = total, cek mobile 375px
+- [x] `migrate:fresh --seed` + `demo:reset` masih jalan normal
 
 ## Jangan
 

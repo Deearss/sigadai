@@ -15,7 +15,7 @@
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                     Barang Gadai
                 </h2>
-                <p class="mt-3 text-sm text-gray-500 max-w-2xl mx-auto">Kelola, pantau, dan temukan seluruh data barang gadai dengan mudah melalui sistem cerdas kami.</p>
+                <p class="mt-3 text-sm text-gray-500 max-w-2xl mx-auto">Kelola, pantau, dan temukan seluruh data barang gadai di satu tempat.</p>
             </div>
 
             <!-- Filter Section Wrapper for Scroll Cover -->
@@ -42,11 +42,12 @@
                         </div>
                     </div>
                     <div class="hidden sm:block text-xs font-medium text-gray-400 uppercase tracking-widest">
-                        Command Center
+                        Panel Kontrol
                     </div>
                 </div>
 
                 <form method="GET" action="{{ route('barang.index') }}" id="filter-form"
+                    onsubmit="Array.from(this.elements).forEach(el => { if (!el.value) el.disabled = true; })"
                     class="flex flex-col w-full gap-3 md:flex-row">
                     <!-- Search Input -->
                     <div class="relative flex-1">
@@ -130,12 +131,15 @@
                             <div class="flex flex-col w-full gap-1 shrink-0 sm:w-36">
                                 <div
                                     class="flex flex-col items-center justify-center overflow-hidden bg-gray-100 border border-gray-200 rounded-lg aspect-square">
-                                    <svg class="w-10 h-10 mb-2 text-gray-300" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                                    </svg>
-                                    <span class="text-[10px] font-medium text-gray-400">No Image</span>
+                                    @if($barang->kategori === 'elektronik')
+                                        <svg class="w-10 h-10 mb-2 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                                        </svg>
+                                    @else
+                                        <svg class="w-10 h-10 mb-2 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                        </svg>
+                                    @endif
                                 </div>
                                 <div class="w-full">
                                     @include('barang._status-badge', [
@@ -223,7 +227,7 @@
 
                                         @php
                                             $tglGadai = $barang->tanggal_gadai->startOfDay();
-                                            $tglJatuhTempo = $tglGadai->copy()->addDays($barang->jangka_waktu);
+                                            $tglJatuhTempo = $barang->tanggal_jatuh_tempo->startOfDay();
                                             $sisaHari = (int) now()->startOfDay()->diffInDays($tglJatuhTempo, false);
 
                                             $totalHari = $barang->jangka_waktu > 0 ? $barang->jangka_waktu : 1;
@@ -236,6 +240,11 @@
                                                 $bgClass = 'bg-emerald-400';
                                                 $textClass = 'text-emerald-600';
                                                 $sisaText = 'Selesai';
+                                                $persen = 100;
+                                            } elseif ($barang->status === 'lelang') {
+                                                $bgClass = 'bg-gray-600';
+                                                $textClass = 'text-gray-700';
+                                                $sisaText = 'Dilelang';
                                                 $persen = 100;
                                             } elseif ($sisaHari <= 0) {
                                                 $bgClass = 'bg-red-500';
@@ -324,7 +333,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                     <p class="text-sm font-medium text-gray-500">Anda telah mencapai akhir daftar data di halaman ini.</p>
-                    <p class="text-xs text-gray-400 mt-1">Gunakan fitur <span class="font-semibold text-gray-500">Navigasi Halaman (Pagination)</span> di Command Center untuk melihat data lainnya.</p>
+                    <p class="text-xs text-gray-400 mt-1">Gunakan fitur <span class="font-semibold text-gray-500">Navigasi Halaman (Pagination)</span> di Panel Kontrol untuk melihat data lainnya.</p>
                 </div>
             @endif
             <div id="bottom-anchor" class="h-1 w-full"></div>
@@ -345,7 +354,7 @@
                 
                 <!-- Custom Tooltip -->
                 <div class="absolute right-full mr-3 whitespace-nowrap bg-gray-900 text-white text-xs font-bold px-3 py-2 rounded-lg shadow-xl opacity-0 translate-x-2 pointer-events-none transition-all duration-300 peer-hover:opacity-100 peer-hover:translate-x-0 z-0">
-                    <span x-text="showCommandCenter ? 'Sembunyikan Command Center' : 'Tampilkan Command Center'"></span>
+                    <span x-text="showCommandCenter ? 'Sembunyikan Panel Kontrol' : 'Tampilkan Panel Kontrol'"></span>
                     <!-- Arrow pointing right -->
                     <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-l-[6px] border-t-transparent border-b-transparent border-l-gray-900"></div>
                 </div>

@@ -28,6 +28,7 @@
             </div>
             <x-text-input id="taksiran_nilai" class="block w-full pl-10" type="text" name="taksiran_nilai" :value="old('taksiran_nilai', $barang->taksiran_nilai ?? '')" placeholder="0" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
         </div>
+        <p class="text-xs text-gray-500 mt-1 mb-1">Kelipatan Rp100</p>
         <div id="taksiran_preview" class="text-sm text-indigo-600 font-medium mt-1 min-h-[20px]"></div>
         <x-input-error :messages="$errors->get('taksiran_nilai')" class="mt-2" />
     </div>

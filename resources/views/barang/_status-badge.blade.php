@@ -4,7 +4,7 @@
     $colors = [
         'aktif' => 'bg-green-200 text-green-800',
         'ditebus' => 'bg-blue-200 text-blue-800',
-        'lelang' => 'bg-red-200 text-red-800',
+        'lelang' => 'bg-amber-200 text-amber-900',
         'jatuh_tempo' => 'bg-red-100 text-red-800',
     ];
 

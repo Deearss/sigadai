@@ -16,7 +16,9 @@ class DashboardController extends Controller
         $barangJatuhTempo = BarangGadai::where('status', 'aktif')
             ->where('tanggal_jatuh_tempo', '<=', today())
             ->count();
-        $barangAktif = BarangGadai::where('status', 'aktif')->count();
+        $barangAktif = BarangGadai::where('status', 'aktif')
+            ->where('tanggal_jatuh_tempo', '>', today())
+            ->count();
         $barangDitebus = BarangGadai::where('status', 'ditebus')->count();
         $barangLelang = BarangGadai::where('status', 'lelang')->count();
         
@@ -31,6 +33,7 @@ class DashboardController extends Controller
             
         $statusStats = [
             'Aktif' => $barangAktif,
+            'Jatuh Tempo' => $barangJatuhTempo,
             'Ditebus' => $barangDitebus,
             'Lelang' => $barangLelang
         ];

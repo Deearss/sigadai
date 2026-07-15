@@ -19,12 +19,16 @@ class BarangGadaiController extends Controller
                 if ($s === 'jatuh_tempo') {
                     $query->where('status', 'aktif')
                           ->where('tanggal_jatuh_tempo', '<=', today());
+                } elseif ($s === 'aktif') {
+                    $query->where('status', 'aktif')
+                          ->where('tanggal_jatuh_tempo', '>', today());
                 } else {
                     $query->where('status', $s);
                 }
             })
             ->when($request->kategori, fn ($query, $k) => $query->where('kategori', $k))
             ->latest()
+            ->orderByDesc('id')
             ->paginate(10)
             ->withQueryString();
 
