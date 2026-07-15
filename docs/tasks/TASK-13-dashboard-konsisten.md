@@ -1,6 +1,6 @@
 # TASK-13: Konsistensi angka dashboard (lelang ilang dari chart)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-12 ✅
 **Asal:** temuan review 2026-07-15
 
@@ -17,11 +17,11 @@ Di [DashboardController.php:31-35](../../app/Http/Controllers/DashboardControlle
 
 ## Kriteria selesai
 
-- [ ] Sum semua segmen chart == angka kartu "Total Barang" (cross-check tinker)
-- [ ] Barang lelang keliatan di chart dengan warna sendiri
-- [ ] "Barang Aktif" == `BarangGadai::where('status','aktif')->count()` (cross-check tinker)
-- [ ] Nggak ada dua angka di halaman dashboard yang saling kontradiksi
-- [ ] Cek visual di situs live setelah deploy
+- [x] Sum semua segmen chart == angka kartu "Total Barang" (cross-check tinker)
+- [x] Barang lelang keliatan di chart dengan warna sendiri
+- [x] "Barang Aktif" == `BarangGadai::where('status','aktif')->count()` (cross-check tinker)
+- [x] Nggak ada dua angka di halaman dashboard yang saling kontradiksi
+- [x] Cek visual di situs live setelah deploy
 
 ## Jangan
 

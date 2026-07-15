@@ -16,8 +16,9 @@ class DashboardController extends Controller
         $barangJatuhTempo = BarangGadai::where('status', 'aktif')
             ->where('tanggal_jatuh_tempo', '<=', today())
             ->count();
-        $barangAktif = BarangGadai::where('status', 'aktif')->count() - $barangJatuhTempo;
+        $barangAktif = BarangGadai::where('status', 'aktif')->count();
         $barangDitebus = BarangGadai::where('status', 'ditebus')->count();
+        $barangLelang = BarangGadai::where('status', 'lelang')->count();
         
         $totalTaksiranKeseluruhan = BarangGadai::sum('taksiran_nilai');
         // Aktif taksiran includes all active items (both regular and jatuh tempo)
@@ -31,7 +32,7 @@ class DashboardController extends Controller
         $statusStats = [
             'Aktif' => $barangAktif,
             'Ditebus' => $barangDitebus,
-            'Jatuh Tempo' => $barangJatuhTempo
+            'Lelang' => $barangLelang
         ];
 
         return view('dashboard', compact(
