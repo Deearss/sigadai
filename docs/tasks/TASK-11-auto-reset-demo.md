@@ -1,6 +1,6 @@
 # TASK-11: Auto-reset data demo (proteksi vandalisme)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** — (kerjain duluan, prioritas tertinggi batch ini)
 **Asal:** temuan review keamanan 2026-07-15
 
@@ -30,11 +30,11 @@ Kabar baik: `fakerphp/faker` udah di `require` (bukan require-dev), jadi seeder 
 
 ## Kriteria selesai
 
-- [ ] Lokal: hapus beberapa barang manual → `php artisan demo:reset` → data balik lengkap (25 record, semua status/kategori ada), user demo tetap bisa login tanpa logout
-- [ ] `php artisan schedule:list` nampilin `demo:reset` hourly
-- [ ] `php artisan migrate:fresh --seed` masih ngehasilin hasil yang sama kayak sebelumnya
-- [ ] Di VPS: cron kepasang, lalu `php artisan schedule:run` manual sekali buat mastiin jalan tanpa error
-- [ ] Situs live dicek setelah reset: data demo utuh, login demo tetap jalan
+- [x] Lokal: hapus beberapa barang manual → `php artisan demo:reset` → data balik lengkap (25 record, semua status/kategori ada), user demo tetap bisa login tanpa logout
+- [x] `php artisan schedule:list` nampilin `demo:reset` hourly
+- [x] `php artisan migrate:fresh --seed` masih ngehasilin hasil yang sama kayak sebelumnya
+- [x] Di VPS: cron kepasang, lalu `php artisan schedule:run` manual sekali buat mastiin jalan tanpa error
+- [x] Situs live dicek setelah reset: data demo utuh, login demo tetap jalan
 
 ## Jangan
 
