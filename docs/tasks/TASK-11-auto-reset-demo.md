@@ -21,11 +21,11 @@ Kabar baik: `fakerphp/faker` udah di `require` (bukan require-dev), jadi seeder 
    ```php
    Schedule::command('demo:reset')->hourly();
    ```
-4. Aktifin scheduler di VPS (butuh SSH — koordinasi sama Dier kalau lu nggak punya akses):
+4. Aktifin scheduler di VPS — **kerjain sendiri via SSH** (akses yang sama kayak waktu lu setup CI/CD; jangan tulis IP/username server di file repo, repo-nya publik):
    ```bash
-   crontab -e
-   # tambahin:
-   * * * * * cd /var/www/sigadai && php artisan schedule:run >> /dev/null 2>&1
+   # di VPS, sebagai user deploy:
+   (crontab -l 2>/dev/null; echo "* * * * * cd /var/www/sigadai && php artisan schedule:run >> /dev/null 2>&1") | crontab -
+   crontab -l   # verifikasi kepasang, dan pastiin nggak dobel
    ```
 
 ## Kriteria selesai
