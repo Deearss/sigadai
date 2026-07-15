@@ -1,6 +1,6 @@
 # TASK-10: README + bukti portofolio
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-11 s/d TASK-14 ✅ (kerjain paling akhir, biar screenshot & angka udah final)
 **Fase spec:** 5
 
@@ -27,9 +27,9 @@ Repo-nya "jualan": orang yang buka GitHub langsung ngerti app-nya apa, kelihatan
 
 ## Kriteria selesai
 
-- [ ] README di GitHub: semua gambar render, link live bisa diklik dan jalan
-- [ ] Orang asing bisa login ke demo cuma dari baca README
-- [ ] Definition of Done poin 7–8 ✓ → **PROJEK SELESAI** 🎉
+- [x] README di GitHub: semua gambar render, link live bisa diklik dan jalan
+- [x] Orang asing bisa login ke demo cuma dari baca README
+- [x] Definition of Done poin 7–8 ✓ → **PROJEK SELESAI** 🎉
 
 ## Jangan
 

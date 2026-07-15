@@ -1,58 +1,115 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SiGadai 📦
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi manajemen inventaris barang gadai yang dibangun sebagai portofolio bertema bisnis gadai syariah.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Live Demo & Akses
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Aplikasi ini sudah di-deploy dan dapat dicoba secara langsung pada tautan berikut:
 
-## Learning Laravel
+**👉 [https://sigadai.my.id](https://sigadai.my.id)**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Gunakan kredensial berikut untuk masuk sebagai petugas koperasi:
+- **Email:** `demo@sigadai.my.id`
+- **Password:** `sigadai123`
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+*(Catatan: Data demo akan di-reset secara otomatis setiap jam untuk mencegah vandalisme).*
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 📸 Tampilan Aplikasi
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+> *(Untuk diisi dengan screenshot)*
+
+![Dashboard](docs/screenshots/dashboard.png)
+*Dashboard dengan ringkasan status dan aset.*
+
+![Kelola Barang](docs/screenshots/index.png)
+*Daftar barang gadai lengkap dengan pencarian dan filter.*
+
+![Form Tambah](docs/screenshots/create.png)
+*Form untuk mencatat barang gadai baru.*
+
+---
+
+## 📹 Video Demo
+
+> *(Untuk diisi dengan link video)*
+
+👉 **[Tonton Video Demo SiGadai di Sini](https://youtube.com/...)**
+
+---
+
+## ✨ Fitur Utama
+
+- **Dashboard Informatif:** Ringkasan jumlah barang aktif, jatuh tempo, serta distribusi status (Aktif, Ditebus, Lelang) dalam bentuk chart visual.
+- **Manajemen Barang Gadai:** Sistem pencatatan barang (elektronik & kendaraan) yang intuitif.
+- **Pencarian & Filter Cerdas:** Filter berdasarkan status, dan cari barang berdasarkan nama barang atau nasabah.
+- **Sistem Jatuh Tempo Otomatis:** Perhitungan masa jatuh tempo barang yang tercatat pada sistem.
+- **Desain Modern:** Menggunakan Tailwind CSS dipadu dengan komponen ala Shadcn UI, menghadirkan antarmuka pengguna yang bersih dan nyaman.
+
+---
+
+## 🛠 Tech Stack & Keputusan Teknis
+
+- **Framework:** Laravel 11 (PHP 8.3)
+- **Frontend:** Blade + Tailwind CSS (via Vite)
+- **Database:** MySQL 8
+
+**Mengapa menggunakan Laravel Breeze?**
+Breeze (blade stack) memberikan titik awal autentikasi yang ringan dan stabil. Kami sengaja **menonaktifkan** fitur *register* dan *forgot password* karena aplikasi ini hanya diakses oleh petugas koperasi internal.
+
+**Mengapa hanya menggunakan 1 Tabel?**
+Untuk menjaga *scope* proyek tetap sederhana sesuai fungsi manajemen inventaris, data nasabah digabung sebagai kolom langsung ke dalam tabel `barang_gadai`. Tidak ada relasi tabel kompleks atau manajemen role bertingkat. Skema ini cukup untuk kebutuhan esensial pencatatan.
+
+---
+
+## ⚙️ CI/CD & Deployment
+
+Aplikasi ini dideploy di VPS **Biznet Ubuntu 24.04** dengan Nginx.
+
+Proses deployment berjalan **sepenuhnya otomatis** menggunakan **GitHub Actions**. 
+Setiap kali ada _push_ ke branch `main`, robot CI/CD akan:
+1. Terhubung secara aman ke VPS menggunakan SSH Keys (SSH Action).
+2. Menarik kode terbaru (`git pull`).
+3. Menginstal dependensi Composer & NPM (`composer install --no-dev`, `npm run build`).
+4. Menjalankan migrasi database produksi (`php artisan migrate --force`).
+5. Mengoptimalkan cache aplikasi.
+
+Pendekatan ini membuktikan kemampuan dasar untuk *Linux Server Administration* dan pemahaman ekosistem DevOps.
+
+---
+
+## 💻 Cara Menjalankan Secara Lokal
+
+Jika Anda ingin menjalankan proyek ini di mesin lokal, ikuti langkah berikut:
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clone repositori
+git clone https://github.com/Deearss/sigadai.git
+cd sigadai
 
-php artisan boost:install
+# 2. Install dependensi PHP
+composer install
+
+# 3. Setup file environment
+cp .env.example .env
+php artisan key:generate
+
+# 4. Migrasi dan isi data dummy (Database SQLite siap digunakan tanpa konfigurasi tambahan)
+php artisan migrate:fresh --seed
+
+# 5. Install dependensi frontend & compile aset
+npm install
+npm run build
+
+# 6. Jalankan local server
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi dapat diakses di `http://localhost:8000`. Gunakan kredensial demo (`demo@sigadai.my.id` / `sigadai123`) untuk login.
