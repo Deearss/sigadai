@@ -1,6 +1,14 @@
 <x-app-layout>
     <x-slot name="title">Barang Gadai</x-slot>
-    <div class="py-12" x-data="{ showCommandCenter: true }">
+    <div class="py-12" x-data="{ 
+        showCommandCenter: true, 
+        isTransitioning: false,
+        toggleCommandCenter() {
+            this.isTransitioning = true;
+            this.showCommandCenter = !this.showCommandCenter;
+            setTimeout(() => { this.isTransitioning = false; }, 500);
+        }
+    }">
         <div class="w-full px-4 sm:px-6 lg:px-8 relative">
             <!-- Header Section -->
             <div class="mb-10 text-center">
@@ -11,8 +19,13 @@
             </div>
 
             <!-- Filter Section Wrapper for Scroll Cover -->
-            <div class="sticky top-0 z-40 bg-gray-100 transition-all duration-500 ease-in-out overflow-hidden origin-top"
-                 :class="showCommandCenter ? 'max-h-[800px] pt-6 -mt-6 mb-6 opacity-100' : 'max-h-0 pt-0 mt-0 mb-0 opacity-0'">
+            <div class="sticky top-0 z-40 bg-gray-100 transition-all duration-500 ease-in-out origin-top"
+                 :class="{
+                    'max-h-[800px] pt-6 -mt-6 mb-6 opacity-100': showCommandCenter,
+                    'max-h-0 pt-0 mt-0 mb-0 opacity-0 overflow-hidden': !showCommandCenter,
+                    'overflow-hidden': isTransitioning,
+                    'overflow-visible': !isTransitioning && showCommandCenter
+                 }">
                 <!-- Filter Section -->
                 <div class="p-5 bg-white border border-gray-200 shadow-xl sm:rounded-xl">
                 <!-- Command Center Clock -->
@@ -318,7 +331,7 @@
 
             <!-- Toggle Command Center Button -->
             <div class="fixed bottom-6 right-6 z-[90] flex items-center justify-center">
-                <button @click="showCommandCenter = !showCommandCenter" 
+                <button @click="toggleCommandCenter()" 
                         class="peer flex items-center justify-center w-12 h-12 bg-indigo-600 text-white rounded-full shadow-xl hover:bg-indigo-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 relative z-10">
                     <!-- Icon Up (Hide) -->
                     <svg x-show="showCommandCenter" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
