@@ -13,7 +13,8 @@ Kerjain **berurutan** dari TASK-01 sampai TASK-10. Jangan loncat, kecuali satu p
 | 11–14 | Batch perbaikan review (auto-reset, jatuh tempo, dashboard, CI/CD) | ✅ semua selesai |
 | 10 | [README + bukti](tasks/TASK-10-readme-bukti.md) | ✅ (video demo masih nunggu Dier) |
 | **15** | [Kebijakan MySQL-only](tasks/TASK-15-mysql-only.md) | ⬜ **mulai dari sini** |
-| **16** | [Badge jatuh tempo derived + tuning seeder](tasks/TASK-16-badge-jatuh-tempo-derived.md) | ⬜ setelah 15 |
+| **16** | [Badge jatuh tempo derived + tuning seeder](tasks/TASK-16-badge-jatuh-tempo-derived.md) | ✅ |
+| **17** | [Invariant lelang (data + validasi)](tasks/TASK-17-invariant-lelang.md) | ⬜ setelah 16 |
 
 TASK-11 s/d 14 lahir dari review kode 2026-07-15, TASK-15 dari keputusan dev/prod parity, TASK-16 dari temuan UX Dier — konteksnya ada di masing-masing file task. Ide di luar scope diparkir di [NANTI.md](NANTI.md).
 
