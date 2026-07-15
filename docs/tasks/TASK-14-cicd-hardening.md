@@ -1,6 +1,6 @@
 # TASK-14: Hardening CI/CD
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-13 ✅ (biar nggak nyampur sama perubahan app)
 **Asal:** temuan review keamanan 2026-07-15
 
@@ -28,9 +28,9 @@
 
 ## Kriteria selesai
 
-- [ ] deploy.yml nggak ada lagi referensi action via tag mutable
-- [ ] Push → run Actions hijau → situs live tetap jalan normal (buka dashboard, login demo)
-- [ ] Push dua commit beruntun cepat → deploy jalan berurutan, nggak paralel (cek tab Actions)
+- [x] deploy.yml nggak ada lagi referensi action via tag mutable
+- [x] Push → run Actions hijau → situs live tetap jalan normal (buka dashboard, login demo)
+- [x] Push dua commit beruntun cepat → deploy jalan berurutan, nggak paralel (cek tab Actions)
 
 ## Jangan
 
