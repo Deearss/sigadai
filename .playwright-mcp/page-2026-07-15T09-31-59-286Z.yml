@@ -1,0 +1,314 @@
+- generic [ref=f8e2]:
+  - navigation [ref=f8e3]:
+    - generic [ref=f8e5]:
+      - generic [ref=f8e6]:
+        - link [ref=f8e8] [cursor=pointer]:
+          - /url: https://sigadai.my.id/dashboard
+        - generic [ref=f8e11]:
+          - link "Dashboard" [ref=f8e12] [cursor=pointer]:
+            - /url: https://sigadai.my.id/dashboard
+          - link "Barang Gadai" [ref=f8e13] [cursor=pointer]:
+            - /url: https://sigadai.my.id/barang
+      - button "Petugas Demo" [ref=f8e17] [cursor=pointer]
+  - main [ref=f8e22]:
+    - generic [ref=f8e24]:
+      - generic [ref=f8e25]:
+        - heading "Barang Gadai" [level=2] [ref=f8e26]
+        - paragraph [ref=f8e27]: Kelola, pantau, dan temukan seluruh data barang gadai di satu tempat.
+      - generic [ref=f8e29]:
+        - generic [ref=f8e30]:
+          - generic [ref=f8e35]:
+            - generic [ref=f8e36]: 17:31:59
+            - generic [ref=f8e37]: Rabu, 15 Juli 2026
+          - generic [ref=f8e38]: Panel Kontrol
+        - generic [ref=f8e39]:
+          - textbox "Cari nama barang / nasabah..." [ref=f8e41]
+          - button "Semua Status" [ref=f8e44] [cursor=pointer]
+          - button "Semua Kategori" [ref=f8e51] [cursor=pointer]
+          - link "Tambah Barang" [ref=f8e57] [cursor=pointer]:
+            - /url: https://sigadai.my.id/barang/create
+        - generic [ref=f8e61]:
+          - generic: Gunakan navigasi ini untuk melihat data lainnya
+          - navigation "Pagination Navigation" [ref=f8e62]:
+            - generic [ref=f8e63]:
+              - paragraph [ref=f8e65]: Menampilkan 1 hingga 10 dari 25 barang
+              - generic [ref=f8e67]:
+                - generic "&laquo; Previous" [ref=f8e68]
+                - generic [ref=f8e72]: "1"
+                - link "Go to page 2" [ref=f8e74] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang?page=2
+                  - text: "2"
+                - link "Go to page 3" [ref=f8e75] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang?page=3
+                  - text: "3"
+                - link "Next &raquo;" [ref=f8e76] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang?page=2
+      - generic [ref=f8e79]:
+        - generic [ref=f8e81]:
+          - generic [ref=f8e82]: lelang
+          - generic [ref=f8e88]:
+            - generic [ref=f8e89]:
+              - generic [ref=f8e90]:
+                - generic [ref=f8e91]: Taksiran Nilai
+                - generic [ref=f8e92]: Rp 20.100.000
+                - generic [ref=f8e93]:
+                  - generic [ref=f8e94]: Honda Beat 2021
+                  - generic [ref=f8e95]: kendaraan
+              - generic [ref=f8e97]:
+                - link "Edit" [ref=f8e98] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/25/edit
+                - button "Hapus" [ref=f8e102] [cursor=pointer]
+            - generic [ref=f8e106]:
+              - generic [ref=f8e107]:
+                - generic [ref=f8e108]: Nasabah
+                - generic [ref=f8e109]: Ulva Nurdiyanti
+                - generic [ref=f8e110]: "081779583274"
+              - generic [ref=f8e111]:
+                - generic [ref=f8e112]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e115]:
+                  - generic [ref=f8e116]: 28/01/26
+                  - generic [ref=f8e117]: Dilelang
+                  - generic [ref=f8e118]: 28/05/26
+        - generic [ref=f8e120]:
+          - generic [ref=f8e121]: ditebus
+          - generic [ref=f8e127]:
+            - generic [ref=f8e128]:
+              - generic [ref=f8e129]:
+                - generic [ref=f8e130]: Taksiran Nilai
+                - generic [ref=f8e131]: Rp 3.300.000
+                - generic [ref=f8e132]:
+                  - generic [ref=f8e133]: Kamera Canon EOS M50
+                  - generic [ref=f8e134]: elektronik
+              - generic [ref=f8e136]:
+                - link "Edit" [ref=f8e137] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/24/edit
+                - button "Hapus" [ref=f8e141] [cursor=pointer]
+            - generic [ref=f8e145]:
+              - generic [ref=f8e146]:
+                - generic [ref=f8e147]: Nasabah
+                - generic [ref=f8e148]: Harsana Wibowo
+                - generic [ref=f8e149]: "088741720276"
+              - generic [ref=f8e150]:
+                - generic [ref=f8e151]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e154]:
+                  - generic [ref=f8e155]: 25/03/26
+                  - generic [ref=f8e156]: Selesai
+                  - generic [ref=f8e157]: 24/04/26
+        - generic [ref=f8e159]:
+          - generic [ref=f8e160]: jatuh tempo
+          - generic [ref=f8e166]:
+            - generic [ref=f8e167]:
+              - generic [ref=f8e168]:
+                - generic [ref=f8e169]: Taksiran Nilai
+                - generic [ref=f8e170]: Rp 7.100.000
+                - generic [ref=f8e171]:
+                  - generic [ref=f8e172]: PS5
+                  - generic [ref=f8e173]: elektronik
+              - generic [ref=f8e175]:
+                - link "Edit" [ref=f8e176] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/23/edit
+                - button "Hapus" [ref=f8e180] [cursor=pointer]
+            - generic [ref=f8e184]:
+              - generic [ref=f8e185]:
+                - generic [ref=f8e186]: Nasabah
+                - generic [ref=f8e187]: Bella Tantri Kuswandari M.M.
+                - generic [ref=f8e188]: "087015999949"
+              - generic [ref=f8e189]:
+                - generic [ref=f8e190]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e193]:
+                  - generic [ref=f8e194]: 01/05/26
+                  - generic [ref=f8e195]: Jatuh Tempo!
+                  - generic [ref=f8e196]: 30/06/26
+        - generic [ref=f8e197]:
+          - generic [ref=f8e198]:
+            - generic [ref=f8e199]: aktif
+            - generic [ref=f8e205]:
+              - generic [ref=f8e206]:
+                - generic [ref=f8e207]:
+                  - generic [ref=f8e208]: Taksiran Nilai
+                  - generic [ref=f8e209]: Rp 14.600.000
+                  - generic [ref=f8e210]:
+                    - generic [ref=f8e211]: Laptop ASUS VivoBook 14
+                    - generic [ref=f8e212]: elektronik
+                - generic [ref=f8e214]:
+                  - link "Edit" [ref=f8e215] [cursor=pointer]:
+                    - /url: https://sigadai.my.id/barang/22/edit
+                  - button "Hapus" [ref=f8e219] [cursor=pointer]
+              - generic [ref=f8e223]:
+                - generic [ref=f8e224]:
+                  - generic [ref=f8e225]: Nasabah
+                  - generic [ref=f8e226]: Dian Padma Rahayu
+                  - generic [ref=f8e227]: "081833539154"
+                - generic [ref=f8e228]:
+                  - generic [ref=f8e229]: Waktu Gadai & Jatuh Tempo
+                  - generic [ref=f8e232]:
+                    - generic [ref=f8e233]: 26/06/26
+                    - generic [ref=f8e234]: Sisa 41 Hari
+                    - generic [ref=f8e235]: 25/08/26
+          - generic [ref=f8e236]: "Catatan: Lecet pemakaian"
+        - generic [ref=f8e238]:
+          - generic [ref=f8e239]: jatuh tempo
+          - generic [ref=f8e245]:
+            - generic [ref=f8e246]:
+              - generic [ref=f8e247]:
+                - generic [ref=f8e248]: Taksiran Nilai
+                - generic [ref=f8e249]: Rp 24.300.000
+                - generic [ref=f8e250]:
+                  - generic [ref=f8e251]: Yamaha Aerox 2021
+                  - generic [ref=f8e252]: kendaraan
+              - generic [ref=f8e254]:
+                - link "Edit" [ref=f8e255] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/21/edit
+                - button "Hapus" [ref=f8e259] [cursor=pointer]
+            - generic [ref=f8e263]:
+              - generic [ref=f8e264]:
+                - generic [ref=f8e265]: Nasabah
+                - generic [ref=f8e266]: Pia Lailasari
+                - generic [ref=f8e267]: "088282314626"
+              - generic [ref=f8e268]:
+                - generic [ref=f8e269]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e272]:
+                  - generic [ref=f8e273]: 04/03/26
+                  - generic [ref=f8e274]: Jatuh Tempo!
+                  - generic [ref=f8e275]: 02/06/26
+        - generic [ref=f8e277]:
+          - generic [ref=f8e278]: aktif
+          - generic [ref=f8e284]:
+            - generic [ref=f8e285]:
+              - generic [ref=f8e286]:
+                - generic [ref=f8e287]: Taksiran Nilai
+                - generic [ref=f8e288]: Rp 6.700.000
+                - generic [ref=f8e289]:
+                  - generic [ref=f8e290]: MacBook Air M1
+                  - generic [ref=f8e291]: elektronik
+              - generic [ref=f8e293]:
+                - link "Edit" [ref=f8e294] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/20/edit
+                - button "Hapus" [ref=f8e298] [cursor=pointer]
+            - generic [ref=f8e302]:
+              - generic [ref=f8e303]:
+                - generic [ref=f8e304]: Nasabah
+                - generic [ref=f8e305]: Endah Sadina Lailasari
+                - generic [ref=f8e306]: "088276159116"
+              - generic [ref=f8e307]:
+                - generic [ref=f8e308]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e311]:
+                  - generic [ref=f8e312]: 08/07/26
+                  - generic [ref=f8e313]: Sisa 83 Hari
+                  - generic [ref=f8e314]: 06/10/26
+        - generic [ref=f8e316]:
+          - generic [ref=f8e317]: aktif
+          - generic [ref=f8e323]:
+            - generic [ref=f8e324]:
+              - generic [ref=f8e325]:
+                - generic [ref=f8e326]: Taksiran Nilai
+                - generic [ref=f8e327]: Rp 10.200.000
+                - generic [ref=f8e328]:
+                  - generic [ref=f8e329]: iPhone 13 128GB
+                  - generic [ref=f8e330]: elektronik
+              - generic [ref=f8e332]:
+                - link "Edit" [ref=f8e333] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/19/edit
+                - button "Hapus" [ref=f8e337] [cursor=pointer]
+            - generic [ref=f8e341]:
+              - generic [ref=f8e342]:
+                - generic [ref=f8e343]: Nasabah
+                - generic [ref=f8e344]: Mahdi Ardianto
+                - generic [ref=f8e345]: "084049572927"
+              - generic [ref=f8e346]:
+                - generic [ref=f8e347]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e350]:
+                  - generic [ref=f8e351]: 02/07/26
+                  - generic [ref=f8e352]: Sisa 77 Hari
+                  - generic [ref=f8e353]: 30/09/26
+        - generic [ref=f8e355]:
+          - generic [ref=f8e356]: jatuh tempo
+          - generic [ref=f8e362]:
+            - generic [ref=f8e363]:
+              - generic [ref=f8e364]:
+                - generic [ref=f8e365]: Taksiran Nilai
+                - generic [ref=f8e366]: Rp 8.300.000
+                - generic [ref=f8e367]:
+                  - generic [ref=f8e368]: Laptop ASUS VivoBook 14
+                  - generic [ref=f8e369]: elektronik
+              - generic [ref=f8e371]:
+                - link "Edit" [ref=f8e372] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/18/edit
+                - button "Hapus" [ref=f8e376] [cursor=pointer]
+            - generic [ref=f8e380]:
+              - generic [ref=f8e381]:
+                - generic [ref=f8e382]: Nasabah
+                - generic [ref=f8e383]: Raisa Winarsih
+                - generic [ref=f8e384]: "085994315879"
+              - generic [ref=f8e385]:
+                - generic [ref=f8e386]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e389]:
+                  - generic [ref=f8e390]: 25/03/26
+                  - generic [ref=f8e391]: Jatuh Tempo!
+                  - generic [ref=f8e392]: 24/05/26
+        - generic [ref=f8e393]:
+          - generic [ref=f8e394]:
+            - generic [ref=f8e395]: jatuh tempo
+            - generic [ref=f8e401]:
+              - generic [ref=f8e402]:
+                - generic [ref=f8e403]:
+                  - generic [ref=f8e404]: Taksiran Nilai
+                  - generic [ref=f8e405]: Rp 13.900.000
+                  - generic [ref=f8e406]:
+                    - generic [ref=f8e407]: Yamaha Aerox 2021
+                    - generic [ref=f8e408]: kendaraan
+                - generic [ref=f8e410]:
+                  - link "Edit" [ref=f8e411] [cursor=pointer]:
+                    - /url: https://sigadai.my.id/barang/17/edit
+                  - button "Hapus" [ref=f8e415] [cursor=pointer]
+              - generic [ref=f8e419]:
+                - generic [ref=f8e420]:
+                  - generic [ref=f8e421]: Nasabah
+                  - generic [ref=f8e422]: Rafi Tri Tampubolon S.Ked
+                  - generic [ref=f8e423]: "085686466415"
+                - generic [ref=f8e424]:
+                  - generic [ref=f8e425]: Waktu Gadai & Jatuh Tempo
+                  - generic [ref=f8e428]:
+                    - generic [ref=f8e429]: 14/03/26
+                    - generic [ref=f8e430]: Jatuh Tempo!
+                    - generic [ref=f8e431]: 12/07/26
+          - generic [ref=f8e432]: "Catatan: Lecet pemakaian"
+        - generic [ref=f8e434]:
+          - generic [ref=f8e435]: jatuh tempo
+          - generic [ref=f8e441]:
+            - generic [ref=f8e442]:
+              - generic [ref=f8e443]:
+                - generic [ref=f8e444]: Taksiran Nilai
+                - generic [ref=f8e445]: Rp 6.600.000
+                - generic [ref=f8e446]:
+                  - generic [ref=f8e447]: Laptop ASUS VivoBook 14
+                  - generic [ref=f8e448]: elektronik
+              - generic [ref=f8e450]:
+                - link "Edit" [ref=f8e451] [cursor=pointer]:
+                  - /url: https://sigadai.my.id/barang/16/edit
+                - button "Hapus" [ref=f8e455] [cursor=pointer]
+            - generic [ref=f8e459]:
+              - generic [ref=f8e460]:
+                - generic [ref=f8e461]: Nasabah
+                - generic [ref=f8e462]: Tira Kusmawati S.Pt
+                - generic [ref=f8e463]: "089768347139"
+              - generic [ref=f8e464]:
+                - generic [ref=f8e465]: Waktu Gadai & Jatuh Tempo
+                - generic [ref=f8e468]:
+                  - generic [ref=f8e469]: 07/03/26
+                  - generic [ref=f8e470]: Jatuh Tempo!
+                  - generic [ref=f8e471]: 05/07/26
+      - generic [ref=f8e472]:
+        - paragraph [ref=f8e475]: Anda telah mencapai akhir daftar data di halaman ini.
+        - paragraph [ref=f8e476]: Gunakan fitur Navigasi Halaman (Pagination) di Panel Kontrol untuk melihat data lainnya.
+      - generic [ref=f8e478]:
+        - button [ref=f8e479] [cursor=pointer]
+        - generic: Sembunyikan Panel Kontrol
+    - generic:
+      - generic:
+        - generic:
+          - heading "Hapus Barang?" [level=3]
+          - paragraph: Anda yakin ingin menghapus data ? Tindakan ini permanen dan tidak dapat dibatalkan.
+          - generic:
+            - button "Batal"
+            - button "Hapus Data"

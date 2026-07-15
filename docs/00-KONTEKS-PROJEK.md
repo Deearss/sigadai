@@ -82,7 +82,7 @@ Angsuran/margin/bunga syariah · multi-cabang · multi-role · upload foto · no
 - **App LIVE di https://sigadai.my.id** — VPS Biznet, deploy otomatis via GitHub Actions ([deploy.yml](../.github/workflows/deploy.yml)): tiap push ke `main` → SSH ke VPS → git pull, composer `--no-dev`, npm build, `migrate --force`, optimize.
 - Review menyeluruh 2026-07-15 menghasilkan batch perbaikan **TASK-11 s/d TASK-14** — semuanya udah selesai, plus TASK-10 (README).
 
-**Sisa kerjaan: [tasks/TASK-15](tasks/TASK-15-mysql-only.md)** (kebijakan MySQL-only) + video demo (manual, Dier). Urutan lengkap di [01-CARA-KERJA](01-CARA-KERJA.md).
+**Semua task kode SELESAI (TASK-01 s/d 18, per 2026-07-15) — kode di-freeze.** Fitur baru cuma lewat [NANTI.md](NANTI.md) + approval Dier. Sisa Definition of Done: video demo (manual, Dier).
 
 ## Definition of Done (garis finish projek)
 

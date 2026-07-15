@@ -1,0 +1,59 @@
+- generic [ref=f9e2]:
+  - navigation [ref=f9e3]:
+    - generic [ref=f9e5]:
+      - generic [ref=f9e6]:
+        - link [ref=f9e8] [cursor=pointer]:
+          - /url: https://sigadai.my.id/dashboard
+        - generic [ref=f9e11]:
+          - link "Dashboard" [ref=f9e12] [cursor=pointer]:
+            - /url: https://sigadai.my.id/dashboard
+          - link "Barang Gadai" [ref=f9e13] [cursor=pointer]:
+            - /url: https://sigadai.my.id/barang
+      - button "Petugas Demo" [ref=f9e17] [cursor=pointer]
+  - main [ref=f9e22]:
+    - generic [ref=f9e26]:
+      - generic [ref=f9e27]:
+        - generic [ref=f9e28]:
+          - heading "Tambah Barang Gadai" [level=3] [ref=f9e29]
+          - paragraph [ref=f9e30]: Masukkan detail barang dan data nasabah dengan teliti sebelum disimpan.
+        - generic [ref=f9e31]:
+          - generic [ref=f9e32]:
+            - generic [ref=f9e33]: Nama Barang
+            - textbox "Nama Barang" [active] [ref=f9e34]:
+              - /placeholder: "Misal: iPhone 13 Pro Max 256GB"
+          - generic [ref=f9e35]:
+            - generic [ref=f9e36]: Kategori
+            - button "Pilih Kategori" [ref=f9e38] [cursor=pointer]
+          - generic [ref=f9e43]:
+            - generic [ref=f9e44]: Status
+            - button "Aktif" [ref=f9e46] [cursor=pointer]
+          - generic [ref=f9e51]:
+            - generic [ref=f9e52]: Taksiran Nilai
+            - generic [ref=f9e53]:
+              - generic: Rp
+              - textbox "Taksiran Nilai" [ref=f9e54]:
+                - /placeholder: "0"
+            - paragraph [ref=f9e55]: Kelipatan Rp100
+          - generic [ref=f9e57]:
+            - generic [ref=f9e58]: Jangka Waktu (Tenor)
+            - button "Pilih Jangka Waktu" [ref=f9e60] [cursor=pointer]
+            - paragraph [ref=f9e65]: Lama barang dititipkan sebelum jatuh tempo.
+          - generic [ref=f9e66]:
+            - generic [ref=f9e67]: Nama Nasabah
+            - textbox "Nama Nasabah" [ref=f9e68]:
+              - /placeholder: Nama sesuai KTP
+          - generic [ref=f9e69]:
+            - generic [ref=f9e70]: Nomor HP
+            - textbox "Nomor HP" [ref=f9e71]:
+              - /placeholder: 08xxxxxxxxxx
+          - generic [ref=f9e73]:
+            - generic [ref=f9e74]: Tanggal Gadai
+            - button "Pilih Tanggal" [ref=f9e76] [cursor=pointer]
+          - generic [ref=f9e82]:
+            - generic [ref=f9e83]: Catatan Tambahan (Opsional)
+            - textbox "Catatan Tambahan (Opsional)" [ref=f9e84]:
+              - /placeholder: "Misal: Dus box hilang, charger original, lecet pemakaian."
+      - generic [ref=f9e85]:
+        - link "Batal" [ref=f9e86] [cursor=pointer]:
+          - /url: https://sigadai.my.id/barang
+        - button "Simpan Data" [ref=f9e87] [cursor=pointer]

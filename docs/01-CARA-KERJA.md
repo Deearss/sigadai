@@ -15,7 +15,9 @@ Kerjain **berurutan** dari TASK-01 sampai TASK-10. Jangan loncat, kecuali satu p
 | **15** | [Kebijakan MySQL-only](tasks/TASK-15-mysql-only.md) | ⬜ **mulai dari sini** |
 | **16** | [Badge jatuh tempo derived + tuning seeder](tasks/TASK-16-badge-jatuh-tempo-derived.md) | ✅ |
 | **17** | [Invariant lelang (data + validasi)](tasks/TASK-17-invariant-lelang.md) | ✅ (terverifikasi live) |
-| **18** | [Sapuan ambiguitas UI](tasks/TASK-18-sapuan-ambiguitas-ui.md) | ⬜ setelah 17 |
+| **18** | [Sapuan ambiguitas UI](tasks/TASK-18-sapuan-ambiguitas-ui.md) | ✅ (terverifikasi live 2026-07-15) |
+
+**Status projek: semua task kode selesai — kode di-freeze.** Sisa DoD: video demo (Dier).
 
 TASK-11 s/d 14 lahir dari review kode 2026-07-15, TASK-15 dari keputusan dev/prod parity, TASK-16 dari temuan UX Dier — konteksnya ada di masing-masing file task. Ide di luar scope diparkir di [NANTI.md](NANTI.md).
 
