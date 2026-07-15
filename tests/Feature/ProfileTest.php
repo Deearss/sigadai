@@ -96,4 +96,24 @@ class ProfileTest extends TestCase
 
         $this->assertNotNull($user->fresh());
     }
+
+    public function test_demo_user_cannot_delete_their_account(): void
+    {
+        $user = User::factory()->create([
+            'email' => 'demo@sigadai.my.id',
+        ]);
+
+        $response = $this
+            ->actingAs($user)
+            ->from('/profile')
+            ->delete('/profile', [
+                'password' => 'password',
+            ]);
+
+        $response
+            ->assertSessionHasErrors('userDeletion')
+            ->assertRedirect('/profile');
+
+        $this->assertNotNull($user->fresh());
+    }
 }

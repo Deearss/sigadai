@@ -15,24 +15,29 @@
 
         <div>
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />
-            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
+            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" :disabled="auth()->user()->email === 'demo@sigadai.my.id'" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="update_password_password" :value="__('New Password')" />
-            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" :disabled="auth()->user()->email === 'demo@sigadai.my.id'" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" :disabled="auth()->user()->email === 'demo@sigadai.my.id'" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @if (auth()->user()->email !== 'demo@sigadai.my.id')
+                <x-primary-button>{{ __('Save') }}</x-primary-button>
+            @else
+                <x-primary-button disabled class="opacity-50 cursor-not-allowed">{{ __('Save') }}</x-primary-button>
+                <p class="text-sm text-red-600">Password akun demo tidak dapat diubah.</p>
+            @endif
 
             @if (session('status') === 'password-updated')
                 <p

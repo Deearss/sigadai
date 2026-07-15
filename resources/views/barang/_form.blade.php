@@ -7,25 +7,15 @@
     </div>
 
     <!-- Baris 2 -->
-    <div>
-        <x-input-label for="kategori" class="text-sm font-semibold text-gray-900" :value="__('Kategori')" />
-        <select id="kategori" name="kategori" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" required>
-            <option value="" disabled {{ old('kategori', $barang->kategori ?? '') == '' ? 'selected' : '' }}>Pilih Kategori</option>
-            @foreach(\App\Models\BarangGadai::KATEGORI as $kat)
-                <option value="{{ $kat }}" {{ old('kategori', $barang->kategori ?? '') == $kat ? 'selected' : '' }}>{{ ucfirst($kat) }}</option>
-            @endforeach
-        </select>
+    <div class="relative z-30">
+        <x-input-label for="kategori" class="text-sm font-semibold text-gray-900 mb-1" :value="__('Kategori')" />
+        <x-combobox name="kategori" :options="collect(\App\Models\BarangGadai::KATEGORI)->map(fn($k) => ['value' => $k, 'label' => ucfirst($k)])->toArray()" :value="old('kategori', $barang->kategori ?? '')" placeholder="Pilih Kategori" />
         <x-input-error :messages="$errors->get('kategori')" class="mt-2" />
     </div>
 
-    <div>
-        <x-input-label for="status" class="text-sm font-semibold text-gray-900" :value="__('Status')" />
-        <select id="status" name="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" required>
-            <option value="" disabled {{ old('status', $barang->status ?? '') == '' ? 'selected' : '' }}>Pilih Status</option>
-            @foreach(\App\Models\BarangGadai::STATUS as $stat)
-                <option value="{{ $stat }}" {{ old('status', $barang->status ?? 'aktif') == $stat ? 'selected' : '' }}>{{ ucfirst($stat) }}</option>
-            @endforeach
-        </select>
+    <div class="relative z-20">
+        <x-input-label for="status" class="text-sm font-semibold text-gray-900 mb-1" :value="__('Status')" />
+        <x-combobox name="status" :options="collect(\App\Models\BarangGadai::STATUS)->map(fn($s) => ['value' => $s, 'label' => ucfirst($s)])->toArray()" :value="old('status', $barang->status ?? 'aktif')" placeholder="Pilih Status" />
         <x-input-error :messages="$errors->get('status')" class="mt-2" />
     </div>
 
@@ -42,14 +32,9 @@
         <x-input-error :messages="$errors->get('taksiran_nilai')" class="mt-2" />
     </div>
 
-    <div>
-        <x-input-label for="jangka_waktu" class="text-sm font-semibold text-gray-900" :value="__('Jangka Waktu (Tenor)')" />
-        <select id="jangka_waktu" name="jangka_waktu" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full" required>
-            <option value="" disabled {{ old('jangka_waktu', $barang->jangka_waktu ?? '') == '' ? 'selected' : '' }}>Pilih Jangka Waktu</option>
-            @foreach([30, 60, 90, 120] as $hari)
-                <option value="{{ $hari }}" {{ old('jangka_waktu', $barang->jangka_waktu ?? '') == $hari ? 'selected' : '' }}>{{ $hari }} Hari</option>
-            @endforeach
-        </select>
+    <div class="relative z-10">
+        <x-input-label for="jangka_waktu" class="text-sm font-semibold text-gray-900 mb-1" :value="__('Jangka Waktu (Tenor)')" />
+        <x-combobox name="jangka_waktu" :options="collect([30, 60, 90, 120])->map(fn($h) => ['value' => $h, 'label' => $h . ' Hari'])->toArray()" :value="old('jangka_waktu', $barang->jangka_waktu ?? '')" placeholder="Pilih Jangka Waktu" />
         <p class="text-xs text-gray-500 mt-1">Lama barang dititipkan sebelum jatuh tempo.</p>
         <x-input-error :messages="$errors->get('jangka_waktu')" class="mt-2" />
     </div>
@@ -63,14 +48,15 @@
 
     <div>
         <x-input-label for="no_hp" class="text-sm font-semibold text-gray-900" :value="__('Nomor HP')" />
-        <x-text-input id="no_hp" class="block mt-1 w-full" type="text" name="no_hp" placeholder="08xxxxxxxxxx" :value="old('no_hp', $barang->no_hp ?? '')" required />
+        <x-text-input id="no_hp" class="block mt-1 w-full" type="tel" name="no_hp" placeholder="08xxxxxxxxxx" :value="old('no_hp', $barang->no_hp ?? '')" maxlength="15" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
+        <div id="no_hp_preview" class="text-sm text-indigo-600 font-medium mt-1 min-h-[20px]"></div>
         <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
     </div>
 
     <!-- Baris 5 -->
-    <div>
-        <x-input-label for="tanggal_gadai" class="text-sm font-semibold text-gray-900" :value="__('Tanggal Gadai')" />
-        <x-text-input id="tanggal_gadai" class="block mt-1 w-full" type="date" name="tanggal_gadai" :value="old('tanggal_gadai', isset($barang) ? $barang->tanggal_gadai->format('Y-m-d') : '')" required />
+    <div class="relative z-20">
+        <x-input-label for="tanggal_gadai" class="text-sm font-semibold text-gray-900 mb-1" :value="__('Tanggal Gadai')" />
+        <x-datepicker name="tanggal_gadai" :value="old('tanggal_gadai', isset($barang) ? $barang->tanggal_gadai->format('Y-m-d') : '')" placeholder="Pilih Tanggal" />
         <x-input-error :messages="$errors->get('tanggal_gadai')" class="mt-2" />
     </div>
 
@@ -89,6 +75,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         const taksiranInput = document.getElementById('taksiran_nilai');
         const taksiranPreview = document.getElementById('taksiran_preview');
+        const hpInput = document.getElementById('no_hp');
+        const hpPreview = document.getElementById('no_hp_preview');
         
         const formatRupiah = (angka) => {
             if (!angka) return '';
@@ -105,10 +93,31 @@
             return 'Rp ' + rupiah;
         };
 
+        const formatPhone = (number) => {
+            if (!number) return '';
+            const cleaned = ('' + number).replace(/\D/g, '');
+            const match = cleaned.match(/^(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,3})$/);
+            if (match) {
+                let parts = [];
+                for (let i = 1; i <= 4; i++) {
+                    if (match[i]) parts.push(match[i]);
+                }
+                return parts.join(' - ');
+            }
+            return cleaned;
+        };
+
         if (taksiranInput && taksiranPreview) {
             taksiranPreview.innerText = formatRupiah(taksiranInput.value);
             taksiranInput.addEventListener('input', function(e) {
                 taksiranPreview.innerText = formatRupiah(this.value);
+            });
+        }
+
+        if (hpInput && hpPreview) {
+            hpPreview.innerText = formatPhone(hpInput.value);
+            hpInput.addEventListener('input', function(e) {
+                hpPreview.innerText = formatPhone(this.value);
             });
         }
     });

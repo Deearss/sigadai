@@ -1,10 +1,5 @@
 <x-app-layout>
     <x-slot name="title">Tambah Barang Gadai</x-slot>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tambah Barang Gadai') }}
-        </h2>
-    </x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
@@ -13,8 +8,8 @@
                     @csrf
                     <div class="p-8">
                         <div class="mb-8 border-b border-gray-100 pb-5">
-                            <h3 class="text-lg font-semibold text-gray-900">Informasi Barang Gadai</h3>
-                            <p class="text-sm text-gray-500 mt-1">Masukkan detail barang dan data nasabah dengan teliti sebelum disimpan ke sistem.</p>
+                            <h3 class="text-lg font-semibold text-gray-900">Tambah Barang Gadai</h3>
+                            <p class="text-sm text-gray-500 mt-1">Masukkan detail barang dan data nasabah dengan teliti sebelum disimpan.</p>
                         </div>
                         
                         @include('barang._form')

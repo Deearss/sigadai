@@ -15,7 +15,14 @@ class BarangGadaiController extends Controller
             ->when($request->q, fn ($query, $q) => $query->where(fn ($w) =>
                 $w->where('nama_barang', 'like', "%{$q}%")
                   ->orWhere('nama_nasabah', 'like', "%{$q}%")))
-            ->when($request->status, fn ($query, $s) => $query->where('status', $s))
+            ->when($request->status, function ($query, $s) {
+                if ($s === 'jatuh_tempo') {
+                    $query->where('status', 'aktif')
+                          ->whereRaw('DATE_ADD(tanggal_gadai, INTERVAL jangka_waktu DAY) <= ?', [now()->startOfDay()]);
+                } else {
+                    $query->where('status', $s);
+                }
+            })
             ->when($request->kategori, fn ($query, $k) => $query->where('kategori', $k))
             ->latest()
             ->paginate(10)

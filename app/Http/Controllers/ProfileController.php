@@ -26,6 +26,10 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        if ($request->user()->email === 'demo@sigadai.my.id') {
+            return Redirect::back()->withErrors(['email' => 'Kredensial akun demo tidak dapat diubah.']);
+        }
+
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -42,6 +46,10 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        if ($request->user()->email === 'demo@sigadai.my.id') {
+            return Redirect::back()->withErrors(['userDeletion' => 'Akun demo tidak dapat dihapus.']);
+        }
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

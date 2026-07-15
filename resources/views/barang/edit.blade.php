@@ -1,10 +1,5 @@
 <x-app-layout>
     <x-slot name="title">Edit Barang Gadai</x-slot>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Barang Gadai') }}
-        </h2>
-    </x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
@@ -15,7 +10,7 @@
                     
                     <div class="p-8">
                         <div class="mb-8 border-b border-gray-100 pb-5">
-                            <h3 class="text-lg font-semibold text-gray-900">Edit Informasi Barang</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Edit Barang Gadai</h3>
                             <p class="text-sm text-gray-500 mt-1">Lakukan perubahan pada data barang atau ubah status gadai saat ini.</p>
                         </div>
                         
