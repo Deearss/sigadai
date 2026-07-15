@@ -22,7 +22,25 @@ class StoreBarangGadaiRequest extends FormRequest
             'nama_nasabah' => ['required', 'string', 'max:255'],
             'no_hp'          => ['required', 'string', 'max:20'],
             'tanggal_gadai'  => ['required', 'date'],
-            'status'         => ['required', \Illuminate\Validation\Rule::in(\App\Models\BarangGadai::STATUS)],
+            'status'         => [
+                'required', 
+                \Illuminate\Validation\Rule::in(\App\Models\BarangGadai::STATUS),
+                function (string $attribute, mixed $value, \Closure $fail) {
+                    if ($value === 'lelang' && $this->tanggal_gadai && $this->jangka_waktu) {
+                        try {
+                            $jatuhTempo = \Carbon\Carbon::parse($this->tanggal_gadai)
+                                ->addDays((int) $this->jangka_waktu)
+                                ->startOfDay();
+                                
+                            if ($jatuhTempo->isFuture() || $jatuhTempo->isToday()) {
+                                $fail('Status lelang hanya untuk barang yang sudah melewati jatuh tempo.');
+                            }
+                        } catch (\Exception $e) {
+                            // Let the date validation handle invalid dates
+                        }
+                    }
+                }
+            ],
             'catatan'        => ['nullable', 'string'],
         ];
     }

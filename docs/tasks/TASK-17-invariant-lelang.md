@@ -1,6 +1,6 @@
 # TASK-17: Invariant lelang — barang cuma boleh dilelang setelah jatuh tempo
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-16 ✅
 **Asal:** temuan Dier 2026-07-15 — filter "Lelang" nampilin barang yang masih "Sisa 20 Hari". Secara domain mustahil: lelang = konsekuensi nasabah gagal nebus SETELAH jatuh tempo.
 
@@ -19,12 +19,12 @@
 
 ## Kriteria selesai
 
-- [ ] Filter `?status=lelang` → SEMUA kartu progress bar-nya "Jatuh Tempo!", nol yang "Sisa X Hari" (cek lokal + live setelah deploy)
-- [ ] Tinker: `BarangGadai::where('status','lelang')->where('tanggal_jatuh_tempo','>=',today())->count()` → 0
-- [ ] Form: submit barang status lelang dengan tanggal gadai kemarin + jangka 30 hari → ditolak validasi dengan pesan yang jelas
-- [ ] Form: barang lelang dengan tanggal 3 bulan lalu + jangka 30 hari → diterima
-- [ ] Barang `ditebus` dengan tanggal recent TETAP diterima (jangan sampe constraint bocor ke ditebus)
-- [ ] `php artisan test` hijau
+- [x] Filter `?status=lelang` → SEMUA kartu progress bar-nya "Jatuh Tempo!", nol yang "Sisa X Hari" (cek lokal + live setelah deploy)
+- [x] Tinker: `BarangGadai::where('status','lelang')->where('tanggal_jatuh_tempo','>=',today())->count()` → 0
+- [x] Form: submit barang status lelang dengan tanggal gadai kemarin + jangka 30 hari → ditolak validasi dengan pesan yang jelas
+- [x] Form: barang lelang dengan tanggal 3 bulan lalu + jangka 30 hari → diterima
+- [x] Barang `ditebus` dengan tanggal recent TETAP diterima (jangan sampe constraint bocor ke ditebus)
+- [x] `php artisan test` hijau
 
 ## Jangan
 
