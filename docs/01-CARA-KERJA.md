@@ -10,13 +10,11 @@ Kerjain **berurutan** dari TASK-01 sampai TASK-10. Jangan loncat, kecuali satu p
 |---|---|---|
 | 01–08 | Fondasi + fitur (migration → polish) | ✅ semua selesai |
 | 09 | [Deploy VPS Biznet](tasks/TASK-09-deploy-vps.md) | ✅ live via GitHub Actions |
-| **11** | [Auto-reset data demo](tasks/TASK-11-auto-reset-demo.md) | ⬜ **mulai dari sini** |
-| **12** | [Jatuh tempo DB-agnostic](tasks/TASK-12-jatuh-tempo-db-agnostic.md) | ⬜ setelah 11 |
-| **13** | [Konsistensi angka dashboard](tasks/TASK-13-dashboard-konsisten.md) | ⬜ setelah 12 |
-| **14** | [Hardening CI/CD](tasks/TASK-14-cicd-hardening.md) | ⬜ setelah 13 |
-| 10 | [README + bukti](tasks/TASK-10-readme-bukti.md) | ⬜ paling akhir (biar screenshot final) |
+| 11–14 | Batch perbaikan review (auto-reset, jatuh tempo, dashboard, CI/CD) | ✅ semua selesai |
+| 10 | [README + bukti](tasks/TASK-10-readme-bukti.md) | ✅ (video demo masih nunggu Dier) |
+| **15** | [Kebijakan MySQL-only](tasks/TASK-15-mysql-only.md) | ⬜ **mulai dari sini** |
 
-TASK-11 s/d 14 lahir dari review kode menyeluruh 2026-07-15 — konteks temuannya ada di masing-masing file task.
+TASK-11 s/d 14 lahir dari review kode 2026-07-15, TASK-15 dari keputusan Dier soal dev/prod parity — konteksnya ada di masing-masing file task.
 
 ## Ritual per task
 
@@ -35,7 +33,7 @@ TASK-11 s/d 14 lahir dari review kode menyeluruh 2026-07-15 — konteks temuanny
 - **Bahasa UI = Indonesia.** Label tombol, judul halaman, pesan validasi: semua Indonesia.
 - **Konsisten sama Breeze.** Pakai layout `x-app-layout` dan komponen Blade bawaan Breeze (`x-input-label`, `x-text-input`, `x-primary-button`, `x-input-error`) biar seragam. Jangan bikin sistem komponen sendiri.
 - Format Rupiah pakai helper: `'Rp ' . number_format($nilai, 0, ',', '.')`.
-- **Kode wajib jalan di MySQL DAN SQLite.** `.env` lokal sekarang MySQL (sah), tapi `phpunit.xml` & `.env.example` pakai SQLite — jangan pakai raw SQL spesifik-vendor.
+- **DB = MySQL di SEMUA lingkungan** (kebijakan MySQL-only). Test pakai DB khusus `sigadai_test` — JANGAN arahin test ke DB dev, `RefreshDatabase` bakal ngehapus isinya. Tetap prefer Eloquent/query builder ketimbang raw SQL.
 - Ada ambiguitas yang ngefek ke keputusan produk → **tanya Dier**, jangan ngarang.
 
 ## Cara verifikasi manual

@@ -24,8 +24,6 @@ Gunakan kredensial berikut untuk masuk sebagai petugas koperasi:
 
 ## 📸 Tampilan Aplikasi
 
-> *(Untuk diisi dengan screenshot)*
-
 ![Dashboard](docs/screenshots/dashboard.png)
 *Dashboard dengan ringkasan status dan aset.*
 
@@ -39,9 +37,7 @@ Gunakan kredensial berikut untuk masuk sebagai petugas koperasi:
 
 ## 📹 Video Demo
 
-> *(Untuk diisi dengan link video)*
-
-👉 **[Tonton Video Demo SiGadai di Sini](https://youtube.com/...)**
+*Video demo menyusul.*
 
 ---
 
@@ -57,7 +53,7 @@ Gunakan kredensial berikut untuk masuk sebagai petugas koperasi:
 
 ## 🛠 Tech Stack & Keputusan Teknis
 
-- **Framework:** Laravel 11 (PHP 8.3)
+- **Framework:** Laravel 13 (PHP 8.3)
 - **Frontend:** Blade + Tailwind CSS (via Vite)
 - **Database:** MySQL 8
 
@@ -100,8 +96,9 @@ composer install
 # 3. Setup file environment
 cp .env.example .env
 php artisan key:generate
+# Buat database MySQL bernama `sigadai`, lalu isi DB_USERNAME & DB_PASSWORD di .env
 
-# 4. Migrasi dan isi data dummy (Database SQLite siap digunakan tanpa konfigurasi tambahan)
+# 4. Migrasi dan isi data dummy
 php artisan migrate:fresh --seed
 
 # 5. Install dependensi frontend & compile aset

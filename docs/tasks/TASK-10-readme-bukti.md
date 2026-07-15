@@ -1,6 +1,6 @@
 # TASK-10: README + bukti portofolio
 
-**Status:** ✅ Selesai
+**Status:** ✅ Selesai — dengan catatan: screenshot asli diambil & di-commit belakangan (2026-07-15, dari situs live), **video demo masih kosong** (README nulis "menyusul"; direkam manual sama Dier, satu-satunya item Definition of Done yang tersisa).
 **Prasyarat:** TASK-11 s/d TASK-14 ✅ (kerjain paling akhir, biar screenshot & angka udah final)
 **Fase spec:** 5
 

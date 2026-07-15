@@ -22,13 +22,12 @@
 | Framework | Laravel 13 (PHP 8.3) | ✅ ter-install |
 | Auth | Laravel Breeze (blade stack) | ✅ ter-install |
 | Frontend | Blade + Tailwind CSS (via Vite) | ✅ ter-install |
-| DB lokal | MySQL (`.env` lokal) | ✅ jalan |
-| DB produksi | MySQL 8 di VPS | ✅ live |
+| DB (semua lingkungan) | MySQL 8 — dev, test (`sigadai_test`), produksi. **Kebijakan MySQL-only**, SQLite dihapus (TASK-15) | ✅ |
 | Repo | https://github.com/Deearss/sigadai (publik, branch `main`) | ✅ ke-push |
 | Deploy | VPS Biznet Ubuntu 24.04, **auto-deploy via GitHub Actions tiap push ke `main`** | ✅ LIVE |
 | Domain | **https://sigadai.my.id** (SSL aktif) | ✅ |
 
-> **Aturan DB:** kode WAJIB jalan di MySQL **dan** SQLite — `phpunit.xml` dan `.env.example` pakai SQLite, produksi pakai MySQL. Jangan pakai raw SQL spesifik-vendor (pelanggaran pertama udah kejadian dan dibereskan di TASK-12).
+> **Kebijakan DB: MySQL-only** (keputusan Dier, 2026-07-15) — dev, test, dan produksi semua MySQL biar sinkron 100%. Test WAJIB pakai DB terpisah `sigadai_test`, JANGAN PERNAH nunjuk ke DB dev (`RefreshDatabase` ngehapus isinya). Tetap prefer Eloquent/query builder ketimbang raw SQL biar maintainable.
 
 ## Data model
 
@@ -43,7 +42,7 @@ Satu tabel utama. **Tanpa tabel nasabah terpisah** — nasabah cuma kolom, bukan
 | kategori | enum: `elektronik`, `kendaraan` | wajib |
 | taksiran_nilai | unsignedBigInteger | Rupiah bulat, wajib, kelipatan 100 (⚠️ penyimpangan resmi dari SPEC-ASLI yang bilang decimal(15,2)) |
 | jangka_waktu | integer, default 30 | lama gadai dalam HARI, wajib di form (kolom tambahan di luar SPEC-ASLI) |
-| tanggal_jatuh_tempo | date, nullable, index | dihitung otomatis = tanggal_gadai + jangka_waktu (nyusul di TASK-12) |
+| tanggal_jatuh_tempo | date, nullable, index | dihitung otomatis di model saat saving = tanggal_gadai + jangka_waktu (TASK-12 ✅) |
 | nama_nasabah | string | wajib |
 | no_hp | string | wajib |
 | tanggal_gadai | date | wajib |
@@ -81,9 +80,9 @@ Angsuran/margin/bunga syariah · multi-cabang · multi-role · upload foto · no
 - **TASK-01 s/d TASK-08 selesai semua** — CRUD, dashboard, search/filter, polish. Cek git log.
 - Di luar task resmi, ada serangkaian commit `TASK-EXTRA` (dikerjain Antigravity bareng Dier): UI di-rombak gaya Shadcn, kolom `jangka_waktu` + konsep "Jatuh Tempo", `taksiran_nilai` jadi integer, proteksi kredensial akun demo.
 - **App LIVE di https://sigadai.my.id** — VPS Biznet, deploy otomatis via GitHub Actions ([deploy.yml](../.github/workflows/deploy.yml)): tiap push ke `main` → SSH ke VPS → git pull, composer `--no-dev`, npm build, `migrate --force`, optimize.
-- Review menyeluruh 2026-07-15 menghasilkan batch perbaikan: **TASK-11 s/d TASK-14** (lihat file task masing-masing).
+- Review menyeluruh 2026-07-15 menghasilkan batch perbaikan **TASK-11 s/d TASK-14** — semuanya udah selesai, plus TASK-10 (README).
 
-**Lanjut dari [tasks/TASK-11](tasks/TASK-11-auto-reset-demo.md)**, urutan lengkap di [01-CARA-KERJA](01-CARA-KERJA.md).
+**Sisa kerjaan: [tasks/TASK-15](tasks/TASK-15-mysql-only.md)** (kebijakan MySQL-only) + video demo (manual, Dier). Urutan lengkap di [01-CARA-KERJA](01-CARA-KERJA.md).
 
 ## Definition of Done (garis finish projek)
 
@@ -93,5 +92,5 @@ Angsuran/margin/bunga syariah · multi-cabang · multi-role · upload foto · no
 - [x] Dashboard nampilin angka dari seeder (⚠️ konsistensi angka dibenerin di TASK-13)
 - [x] Search & filter jalan
 - [x] Nggak error pas data kosong (empty state)
-- [ ] README: deskripsi + screenshot + link live + link video demo ← **TASK-10, belum**
-- [ ] Repo publik rapi ← nunggu TASK-10
+- [ ] README: deskripsi ✅ + screenshot ✅ + link live ✅ + link video demo ← **tinggal video, direkam Dier**
+- [x] Repo publik rapi
