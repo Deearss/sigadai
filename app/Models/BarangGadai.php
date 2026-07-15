@@ -38,4 +38,14 @@ class BarangGadai extends Model
             $barang->tanggal_jatuh_tempo = $barang->tanggal_gadai?->copy()->addDays((int) $barang->jangka_waktu);
         });
     }
+
+    public function getStatusTampilanAttribute(): string
+    {
+        if ($this->status === 'aktif'
+            && $this->tanggal_jatuh_tempo
+            && $this->tanggal_jatuh_tempo->isPast()) {
+            return 'jatuh_tempo';
+        }
+        return $this->status;
+    }
 }

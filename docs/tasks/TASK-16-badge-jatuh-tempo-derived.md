@@ -1,6 +1,6 @@
 # TASK-16: Badge status nampilin kondisi jatuh tempo (derived, BUKAN kolom baru)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-15 ✅
 **Asal:** temuan Dier 2026-07-15 — di index, ada kartu yang progress bar-nya bilang "Jatuh Tempo!" tapi badge di bawah foto bilang "Aktif". Ambigu buat user.
 
@@ -34,12 +34,12 @@ Alasan (biar nggak tergoda "auto-update kolom status"):
 
 ## Kriteria selesai
 
-- [ ] Nggak ada satu pun kartu yang progress bar-nya "Jatuh Tempo!" tapi badge-nya "Aktif" (scan semua halaman index)
-- [ ] Edit barang jatuh tempo → perpanjang `jangka_waktu` → badge langsung balik "Aktif" tanpa aksi lain
-- [ ] Filter `?status=jatuh_tempo` hasilnya = kartu-kartu yang badge-nya "Jatuh Tempo"
-- [ ] Angka dashboard tetap konsisten (kartu Jatuh Tempo == jumlah badge Jatuh Tempo di index tanpa filter)
-- [ ] `php artisan test` hijau
-- [ ] Setelah deploy: cek visual di situs live + data hasil seed baru keliatan sehat (mayoritas aktif belum telat)
+- [x] Nggak ada satu pun kartu yang progress bar-nya "Jatuh Tempo!" tapi badge-nya "Aktif" (scan semua halaman index)
+- [x] Edit barang jatuh tempo → perpanjang `jangka_waktu` → badge langsung balik "Aktif" tanpa aksi lain
+- [x] Filter `?status=jatuh_tempo` hasilnya = kartu-kartu yang badge-nya "Jatuh Tempo"
+- [x] Angka dashboard tetap konsisten (kartu Jatuh Tempo == jumlah badge Jatuh Tempo di index tanpa filter)
+- [x] `php artisan test` hijau
+- [x] Setelah deploy: cek visual di situs live + data hasil seed baru keliatan sehat (mayoritas aktif belum telat)
 
 ## Jangan
 

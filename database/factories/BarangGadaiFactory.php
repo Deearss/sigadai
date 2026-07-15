@@ -33,19 +33,34 @@ class BarangGadaiFactory extends Factory
             $taksiranNilai = fake()->numberBetween(50, 250) * 100000; // 5jt - 25jt
         }
 
+        $status = fake()->randomElement(array_merge(
+            array_fill(0, 60, 'aktif'),
+            array_fill(0, 25, 'ditebus'),
+            array_fill(0, 15, 'lelang')
+        ));
+        
+        $jangkaWaktu = fake()->randomElement([30, 60, 90, 120]);
+
+        if ($status === 'aktif') {
+            $isOverdue = fake()->boolean(30); // 30% overdue
+            if ($isOverdue) {
+                $tanggalGadai = fake()->dateTimeBetween('-' . ($jangkaWaktu + 60) . ' days', '-' . ($jangkaWaktu + 1) . ' days');
+            } else {
+                $tanggalGadai = fake()->dateTimeBetween('-' . ($jangkaWaktu - 1) . ' days', 'now');
+            }
+        } else {
+            $tanggalGadai = fake()->dateTimeBetween('-6 months', '-' . ($jangkaWaktu + 1) . ' days');
+        }
+
         return [
             'nama_barang' => $namaBarang,
             'kategori' => $kategori,
             'taksiran_nilai' => $taksiranNilai,
-            'jangka_waktu' => fake()->randomElement([30, 60, 90, 120]),
+            'jangka_waktu' => $jangkaWaktu,
             'nama_nasabah' => fake('id_ID')->name(),
             'no_hp' => '08' . fake()->numerify('##########'),
-            'tanggal_gadai' => fake()->dateTimeBetween('-6 months', 'now'),
-            'status' => fake()->randomElement(array_merge(
-                array_fill(0, 60, 'aktif'),
-                array_fill(0, 25, 'ditebus'),
-                array_fill(0, 15, 'lelang')
-            )),
+            'tanggal_gadai' => $tanggalGadai,
+            'status' => $status,
             'catatan' => fake()->boolean(30) ? fake()->randomElement(['Mulus', 'Lecet pemakaian', 'Surat lengkap', 'Pajak hidup', 'Dus ada']) : null,
         ];
     }

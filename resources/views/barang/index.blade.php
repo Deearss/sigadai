@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="w-full">
                                     @include('barang._status-badge', [
-                                        'status' => $barang->status,
+                                        'status' => $barang->status_tampilan,
                                         'class' => 'w-full',
                                     ])
                                 </div>
