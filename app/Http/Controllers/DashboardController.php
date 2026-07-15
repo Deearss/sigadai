@@ -13,11 +13,14 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         $totalBarang = BarangGadai::count();
-        $barangAktif = BarangGadai::where('status', 'aktif')->count();
+        $barangJatuhTempo = BarangGadai::where('status', 'aktif')
+            ->whereRaw('DATE_ADD(tanggal_gadai, INTERVAL jangka_waktu DAY) <= ?', [now()->startOfDay()])
+            ->count();
+        $barangAktif = BarangGadai::where('status', 'aktif')->count() - $barangJatuhTempo;
         $barangDitebus = BarangGadai::where('status', 'ditebus')->count();
-        $barangJatuhTempo = BarangGadai::where('status', 'jatuh_tempo')->count();
         
         $totalTaksiranKeseluruhan = BarangGadai::sum('taksiran_nilai');
+        // Aktif taksiran includes all active items (both regular and jatuh tempo)
         $totalTaksiranAktif = BarangGadai::where('status', 'aktif')->sum('taksiran_nilai');
         
         $kategoriStats = BarangGadai::select('kategori')
