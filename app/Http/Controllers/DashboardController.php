@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         $totalBarang = BarangGadai::count();
         $barangJatuhTempo = BarangGadai::where('status', 'aktif')
-            ->whereRaw('DATE_ADD(tanggal_gadai, INTERVAL jangka_waktu DAY) <= ?', [now()->startOfDay()])
+            ->where('tanggal_jatuh_tempo', '<=', today())
             ->count();
         $barangAktif = BarangGadai::where('status', 'aktif')->count() - $barangJatuhTempo;
         $barangDitebus = BarangGadai::where('status', 'ditebus')->count();

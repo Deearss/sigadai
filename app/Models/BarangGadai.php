@@ -28,6 +28,14 @@ class BarangGadai extends Model
 
     protected $casts = [
         'tanggal_gadai' => 'date',
+        'tanggal_jatuh_tempo' => 'date',
         'taksiran_nilai' => 'integer',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function (BarangGadai $barang) {
+            $barang->tanggal_jatuh_tempo = $barang->tanggal_gadai?->copy()->addDays((int) $barang->jangka_waktu);
+        });
+    }
 }

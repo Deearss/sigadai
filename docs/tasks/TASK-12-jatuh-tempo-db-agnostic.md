@@ -1,6 +1,6 @@
 # TASK-12: Hilangkan raw SQL MySQL-only (jatuh tempo → kolom sendiri)
 
-**Status:** ⬜ Belum
+**Status:** ✅ Selesai
 **Prasyarat:** TASK-11 ✅
 **Asal:** temuan review (blocker) 2026-07-15
 
@@ -46,11 +46,11 @@ Push ke `main` = auto-deploy + `php artisan migrate --force` di produksi (lihat 
 
 ## Kriteria selesai
 
-- [ ] Angka "Jatuh Tempo" di dashboard SAMA sebelum vs sesudah refactor (cross-check tinker sebelum mulai: catat angkanya)
-- [ ] `/dashboard` dan `/barang?status=jatuh_tempo` jalan di SQLite tanpa error
-- [ ] `php artisan test` hijau (termasuk test dashboard baru)
-- [ ] Grep `whereRaw` di app/ → nol hasil (atau sisa yang DB-agnostic doang)
-- [ ] Setelah push: cek Actions hijau + dashboard live masih bener angkanya
+- [x] Angka "Jatuh Tempo" di dashboard SAMA sebelum vs sesudah refactor (cross-check tinker sebelum mulai: catat angkanya)
+- [x] `/dashboard` dan `/barang?status=jatuh_tempo` jalan di SQLite tanpa error
+- [x] `php artisan test` hijau (termasuk test dashboard baru)
+- [x] Grep `whereRaw` di app/ → nol hasil (atau sisa yang DB-agnostic doang)
+- [x] Setelah push: cek Actions hijau + dashboard live masih bener angkanya
 
 ## Jangan
 

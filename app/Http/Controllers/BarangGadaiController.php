@@ -18,7 +18,7 @@ class BarangGadaiController extends Controller
             ->when($request->status, function ($query, $s) {
                 if ($s === 'jatuh_tempo') {
                     $query->where('status', 'aktif')
-                          ->whereRaw('DATE_ADD(tanggal_gadai, INTERVAL jangka_waktu DAY) <= ?', [now()->startOfDay()]);
+                          ->where('tanggal_jatuh_tempo', '<=', today());
                 } else {
                     $query->where('status', $s);
                 }
