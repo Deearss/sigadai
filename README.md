@@ -35,12 +35,6 @@ Gunakan kredensial berikut untuk masuk sebagai petugas koperasi:
 
 ---
 
-## 📹 Video Demo
-
-*Video demo menyusul.*
-
----
-
 ## ✨ Fitur Utama
 
 - **Dashboard Informatif:** Ringkasan jumlah barang aktif, jatuh tempo, serta distribusi status (Aktif, Ditebus, Lelang) dalam bentuk chart visual.
@@ -67,7 +61,7 @@ Untuk menjaga *scope* proyek tetap sederhana sesuai fungsi manajemen inventaris,
 
 ## ⚙️ CI/CD & Deployment
 
-Aplikasi ini dideploy di VPS **Biznet Ubuntu 24.04** dengan Nginx.
+Aplikasi ini dideploy di VPS **Ubuntu 24.04** dengan Nginx.
 
 Proses deployment berjalan **sepenuhnya otomatis** menggunakan **GitHub Actions**. 
 Setiap kali ada _push_ ke branch `main`, robot CI/CD akan:
